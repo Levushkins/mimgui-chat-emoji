@@ -1,8 +1,8 @@
--- chat_emoji.lua — смайлы из _chat.asi (Arizona Games) для mimgui.
+-- chat_emoji.lua - смайлы из _chat.asi (Arizona Games) для mimgui.
 --
 -- Почему через текстуру, а не через шрифт:
 --   mimgui собран со stb_truetype и 16-битным ImWchar. stb_truetype не умеет
---   цветные глифы (COLR/CPAL и SVG — а именно так устроены Segoe UI Emoji и
+--   цветные глифы (COLR/CPAL и SVG - а именно так устроены Segoe UI Emoji и
 --   icons.ttf из _chat.asi), а 16-битный ImWchar физически не может хранить
 --   кодовые точки выше U+FFFF, где и живут почти все смайлы (U+1F300+).
 --   Поэтому смайлы заранее растеризуются в один PNG-атлас
@@ -41,8 +41,8 @@ emoji.PATTERN = ':u(%x+):'
 
 -- Подписи панели. Специально латиницей: тогда файл модуля целиком в ASCII,
 -- и его невозможно испортить пересохранением в другой кодировке (блокнот
--- по умолчанию пишет cp1251, а ImGui ждёт UTF-8 — отсюда «??» вместо текста).
--- Нужны русские надписи — задайте их у себя, файл при этом сохраните в UTF-8:
+-- по умолчанию пишет cp1251, а ImGui ждёт UTF-8 - отсюда «??» вместо текста).
+-- Нужны русские надписи - задайте их у себя, файл при этом сохраните в UTF-8:
 --     emoji.strings.search = 'Поиск...'
 -- Названия категорий приходят из описания атласа и уже экранированы, поэтому
 -- на них кодировка файла не влияет.
@@ -120,7 +120,7 @@ end
 -- @param dir каталог с chat_emoji_atlas.lua и chat_emoji.png (необязательно)
 -- @return true либо false, текст ошибки
 -- Функции ImGui, на которые опирается модуль. Сборки mimgui отличаются, и
--- перегруженные функции (PushID, например) в биндинге могут отсутствовать —
+-- перегруженные функции (PushID, например) в биндинге могут отсутствовать -
 -- лучше сказать об этом сразу, чем упасть посреди отрисовки.
 local REQUIRED_IMGUI = {
     'ImVec2', 'Dummy', 'Image', 'InvisibleButton', 'GetWindowDrawList',
@@ -238,7 +238,7 @@ end
 --- Освобождает текстуру. Вызывать при выгрузке скрипта.
 function emoji.unload()
     if emoji.texture ~= nil then
-        -- IDirect3DTexture9::Release — третий метод в vtable
+        -- IDirect3DTexture9::Release - третий метод в vtable
         local vtbl = ffi.cast('void***', emoji.texture)[0]
         local release = ffi.cast('unsigned long(__stdcall*)(void*)', vtbl[2])
         release(emoji.texture)
@@ -337,8 +337,8 @@ end
 --- Разбирает строку на куски текста и смайлы.
 -- @return массив { { text = '...' } | { emoji = <запись> } }
 function emoji.parse(str)
-    -- pos  — откуда искать следующий токен
-    -- from — откуда начинается ещё не выданный кусок текста; двигается
+    -- pos  - откуда искать следующий токен
+    -- from - откуда начинается ещё не выданный кусок текста; двигается
     --        только когда токен реально распознан, иначе текст перед
     --        нераспознанным токеном потерялся бы
     local out, pos, from = {}, 1, 1
@@ -421,7 +421,7 @@ function emoji.picker(id, size, height)
 
     -- Пространство имён делаем суффиксом в подписях, а не PushID: PushID в
     -- ImGui перегружена (int/str/ptr), и биндинг mimgui не отдаёт её под
-    -- коротким именем — imgui.PushID там nil.
+    -- коротким именем - imgui.PushID там nil.
     local pid = tostring(id or 'chat_emoji_picker')
 
     local searchBuf = searchBuffer(pid)
@@ -464,7 +464,7 @@ function emoji.picker(id, size, height)
                         imgui.SameLine()
                         x = x + spacing
                     else
-                        x = 0           -- не зовём SameLine — будет перенос
+                        x = 0           -- не зовём SameLine - будет перенос
                     end
                 end
                 if emoji.button(e, size, pid .. '_' .. e.slot) then picked = e end
