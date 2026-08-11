@@ -1,4 +1,4 @@
--- chat_emoji_minimal.lua — самый короткий рабочий пример.
+-- chat_emoji_minimal.lua - самый короткий рабочий пример.
 -- Команда /sm открывает окно mimgui со смайлами.
 --
 -- Файлы:
@@ -9,7 +9,7 @@
 --
 -- ВАЖНО про кодировку: этот файл сохранён в UTF-8, а ImGui как раз ждёт
 -- UTF-8, поэтому русские строки передаются в него как есть, без u8().
--- Оборачивать в u8() надо наоборот — файлы в cp1251. А вот SA-MP работает
+-- Оборачивать в u8() надо наоборот - файлы в cp1251. А вот SA-MP работает
 -- в cp1251, поэтому текст для sampSendChat / sampAddChatMessage переводим
 -- обратно через u8:decode().
 
@@ -34,7 +34,7 @@ end
 imgui.OnInitialize(function()
     imgui.GetIO().IniFilename = nil
 
-    -- грузим атлас смайлов; если что-то не так — напишет в чат
+    -- грузим атлас смайлов; если что-то не так - напишет в чат
     local ok, err = emoji.load()
     if not ok then sampAddChatMessage('Emoji: ' .. tostring(err), 0xFF4444) end
 end)
