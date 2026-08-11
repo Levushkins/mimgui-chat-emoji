@@ -1,4 +1,4 @@
--- test_chat_emoji.lua — проверка логики chat_emoji.lua без игры.
+-- test_chat_emoji.lua - проверка логики chat_emoji.lua без игры.
 -- Подменяет mimgui и API MoonLoader, поэтому запускается где угодно:
 --
 --     cd chat-emoji && luajit tools/test_chat_emoji.lua
@@ -102,7 +102,7 @@ end
 check(emoji.get(':)') ~= nil and emoji.get(':)').cp == 0x1F642, 'синоним :)')
 check(emoji.get('<3') ~= nil and emoji.get('<3').cp == 0x2764, 'синоним <3')
 
--- порядок обязан совпадать с панелью чата: первые шесть — как в Arizona
+-- порядок обязан совпадать с панелью чата: первые шесть - как в Arizona
 local head = { 0x1F600, 0x1F601, 0x1F602, 0x1F923, 0x1F603, 0x1F604 }
 for i, cp in ipairs(head) do
     check(emoji.list[i] and emoji.list[i].cp == cp,
@@ -122,7 +122,7 @@ for _, cp in ipairs({ 0xF013, 0xF241, 0xF24E, 0xF250, 0xF259, 0xF260,
     check(emoji.get(cp) ~= nil, ('нет скрытой иконки U+%05X'):format(cp))
 end
 
--- вкладки панели чата обязаны идти первыми, скрытые — после них
+-- вкладки панели чата обязаны идти первыми, скрытые - после них
 local firstHidden, lastPanel = nil, nil
 for i, c in ipairs(emoji.categories) do
     if c.name:find('^\208\161\208\186\209\128\209\139') then
