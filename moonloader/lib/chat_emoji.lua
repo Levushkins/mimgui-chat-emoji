@@ -109,6 +109,75 @@ local function createTexture(pngData)
 end
 
 --------------------------------------------------------------------------
+-- Общая текстура на все скрипты
+--------------------------------------------------------------------------
+-- MoonLoader запускает каждый скрипт в отдельной Lua-машине, поэтому три
+-- скрипта с этой библиотекой создавали три копии одной и той же текстуры,
+-- по 16 МБ видеопамяти каждая. Машины разные, но процесс один, а значит
+-- указатель можно передать через переменную окружения процесса.
+--
+-- Время жизни считает сам COM: кто нашёл готовую текстуру, делает AddRef,
+-- при выгрузке каждый делает Release. Переменная стирается, когда Release
+-- вернул ноль, то есть когда отпустил последний.
+
+ffi.cdef [[
+    unsigned long __stdcall GetEnvironmentVariableA(const char* name,
+                                                    char* buf,
+                                                    unsigned long size);
+    int __stdcall SetEnvironmentVariableA(const char* name, const char* value);
+]]
+
+local SHARED_SLOT = 'CHAT_EMOJI_TEXTURE'
+
+local kernel32 = nil
+local function winapi()
+    if kernel32 == nil then
+        local ok, lib = pcall(ffi.load, 'kernel32')
+        kernel32 = ok and lib or false
+    end
+    return kernel32 or nil
+end
+
+-- IUnknown: AddRef это метод 1 в vtable, Release это метод 2
+local function comCall(obj, index)
+    local vtbl = ffi.cast('void***', obj)[0]
+    return ffi.cast('unsigned long(__stdcall*)(void*)', vtbl[index])(obj)
+end
+
+local function slotRead()
+    local k = winapi()
+    if not k then return nil end
+    local buf = ffi.new('char[256]')
+    local n = k.GetEnvironmentVariableA(SHARED_SLOT, buf, 256)
+    if n == 0 or n >= 256 then return nil end
+    return ffi.string(buf, n)
+end
+
+local function slotWrite(value)
+    local k = winapi()
+    if k then k.SetEnvironmentVariableA(SHARED_SLOT, value) end
+end
+
+--- Берёт уже созданную кем-то текстуру того же атласа, если она есть.
+local function takeShared(key)
+    local raw = slotRead()
+    if not raw then return nil end
+    local addr, storedKey = raw:match('^(%x+)|(.*)$')
+    if not addr or storedKey ~= key then return nil end
+    local ok, tex = pcall(ffi.cast, 'void*', tonumber(addr, 16))
+    if not ok or tex == nil then return nil end
+    if not pcall(comCall, tex, 1) then return nil end     -- AddRef
+    return tex
+end
+
+local function publishShared(key, tex)
+    local ok, addr = pcall(function()
+        return tonumber(ffi.cast('uint32_t', ffi.cast('uintptr_t', tex)))
+    end)
+    if ok and addr then slotWrite(('%08X|%s'):format(addr, key)) end
+end
+
+--------------------------------------------------------------------------
 -- Загрузка атласа
 --------------------------------------------------------------------------
 
@@ -160,13 +229,24 @@ function emoji.load(dir)
     end
 
     local pngPath = dir .. atlas.file
-    local f = io.open(pngPath, 'rb')
-    if not f then return false, 'not found: ' .. pngPath end
-    local png = f:read('*a')
-    f:close()
 
-    local tex, terr = createTexture(png)
-    if not tex then return false, terr end
+    -- если этот же атлас уже загрузил другой скрипт, переиспользуем текстуру
+    -- и не тратим ещё 16 МБ видеопамяти
+    local key = pngPath:lower() .. '#' .. tostring(atlas.count)
+    local tex = takeShared(key)
+    emoji.sharedTexture = tex ~= nil
+
+    if not tex then
+        local f = io.open(pngPath, 'rb')
+        if not f then return false, 'not found: ' .. pngPath end
+        local png = f:read('*a')
+        f:close()
+
+        local terr
+        tex, terr = createTexture(png)
+        if not tex then return false, terr end
+        publishShared(key, tex)
+    end
 
     emoji.texture = tex
     emoji.build(atlas)
@@ -238,12 +318,14 @@ end
 --- Освобождает текстуру. Вызывать при выгрузке скрипта.
 function emoji.unload()
     if emoji.texture ~= nil then
-        -- IDirect3DTexture9::Release - третий метод в vtable
-        local vtbl = ffi.cast('void***', emoji.texture)[0]
-        local release = ffi.cast('unsigned long(__stdcall*)(void*)', vtbl[2])
-        release(emoji.texture)
+        -- Release возвращает оставшееся число ссылок. Ноль означает, что
+        -- текстуру отпустил последний скрипт и общий слот пора освободить,
+        -- иначе там останется адрес уже уничтоженного объекта.
+        local ok, refs = pcall(comCall, emoji.texture, 2)
+        if ok and refs == 0 then slotWrite('') end
         emoji.texture = nil
     end
+    emoji.sharedTexture = false
     emoji.loaded = false
 end
 
