@@ -62,7 +62,20 @@ imgui.OnFrame(
 
             imgui.Separator()
 
-            -- 4. панель выбора: клик отправляет смайл в чат.
+            -- 4. смайлы в обычном диалоге SA-MP. Тут ничего не рисуем:
+            --    токен подменит сам плагин чата, поэтому ни текстура,
+            --    ни mimgui для этого не нужны.
+            if imgui.Button('Show SA-MP dialog') then
+                emoji.dialog(31501, 'Menu ' .. emoji.tok('arz'),
+                    emoji.tok('trophy')   .. ' Records\n' ..
+                    emoji.tok('moneybag') .. ' Balance\n' ..
+                    emoji.tok('gear')     .. ' Settings',
+                    'Select', 'Close', 2)       -- 2 = DIALOG_STYLE_LIST
+            end
+
+            imgui.Separator()
+
+            -- 5. панель выбора: клик отправляет смайл в чат.
             --    Токен :uXXXX: состоит из цифр и латиницы, так что
             --    перекодировать его не нужно.
             local picked = emoji.picker('grid', 24, 220)

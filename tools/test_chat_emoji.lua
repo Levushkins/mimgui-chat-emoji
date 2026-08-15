@@ -155,5 +155,67 @@ check(render('a :u9ffffff: b :u1f603: c') == 'a :u9ffffff: b <smiley> c',
 check(render('двоеточия :: и :u: без кода') == 'двоеточия :: и :u: без кода',
       'ложные срабатывания на двоеточиях')
 
+-- --------------------------------------------------------------------------
+-- диалоги SA-MP: сборка токенов и обработка текста
+check(emoji.tok('trophy') == ':u1f3c6:', 'tok по имени')
+check(emoji.tok('arz') == ':u1fc08:', 'tok по серверному имени')
+check(emoji.tok('такого нет') == '', 'tok у неизвестного имени возвращает пусто')
+
+-- токен обязан быть чистым ASCII: он проходит через sampShowDialog как есть,
+-- и cp1251 не должен его портить
+for _, e in ipairs(emoji.list) do
+    check(not e.token:find('[\128-\255]'), 'токен не ASCII у ' .. e.name)
+end
+
+check(emoji.strip('привет :u1f603: как дела') == 'привет как дела',
+      'strip не съел лишний пробел')
+check(emoji.strip('без токенов') == 'без токенов', 'strip не трогает чистый текст')
+check(emoji.strip(':u1f603:') == '', 'strip строки из одного токена')
+check(emoji.strip('в конце строки :u1f603:') == 'в конце строки',
+      'strip оставил хвостовой пробел')
+check(emoji.strip('a :u1f603:\nb') == 'a\nb', 'strip перед переводом строки')
+check(emoji.strip('время 12:30 и :u1f603: тут') == 'время 12:30 и тут',
+      'strip задел обычное двоеточие')
+
+check(emoji.expand(':trophy: рекорд') == ':u1f3c6: рекорд', 'expand по имени')
+check(emoji.expand('итого: 12:30') == 'итого: 12:30',
+      'expand тронул текст, не являющийся токеном')
+check(emoji.expand(':неизвестное_имя:') == ':неизвестное_имя:',
+      'expand заменил незнакомое имя')
+
+local m = emoji.measure('a :u1f603: b :u1fc08:')
+check(m.tokens == 2, 'measure посчитал токены: ' .. m.tokens)
+check(m.tokenBytes == #':u1f603:' + #':u1fc08:', 'measure посчитал байты токенов')
+check(m.bytes == #'a :u1f603: b :u1fc08:', 'measure посчитал длину строки')
+check(m.visible == m.bytes - m.tokenBytes + m.tokens, 'measure: visible')
+
+-- detect() без winapi обязан честно сказать «нет», а не упасть
+emoji.plugin = nil
+local detected = emoji.detect()
+check(type(detected) == 'boolean', 'detect вернул не булево: ' .. tostring(detected))
+
+-- fit() при отсутствии плагина обязан убрать токены, при наличии - оставить
+emoji.plugin = false
+check(emoji.fit('a :u1f603: b') == 'a b', 'fit без плагина не убрал токен')
+emoji.plugin = true
+check(emoji.fit('a :u1f603: b') == 'a :u1f603: b', 'fit с плагином испортил текст')
+
+-- dialog() не должен молча отправлять текст сверх лимита
+local shown = nil
+_G.sampShowDialog = function(id, cap, text, b1, b2, style)
+    shown = { id = id, cap = cap, text = text, b1 = b1, b2 = b2, style = style }
+end
+check(emoji.dialog(7, 'Заголовок ' .. emoji.tok('arz'), 'строка', 'ОК', '', 0),
+      'dialog вернул false на нормальном тексте')
+check(shown ~= nil and shown.id == 7, 'dialog не вызвал sampShowDialog')
+check(shown.cap:find(':u1fc08:', 1, true) ~= nil, 'токен пропал из заголовка')
+
+shown = nil
+local okBig, whyBig = emoji.dialog(7, 'c', string.rep('x', emoji.DIALOG_LIMIT + 1))
+check(okBig == false, 'dialog пропустил текст сверх лимита')
+check(type(whyBig) == 'string' and whyBig:find('limit'), 'dialog не объяснил отказ')
+check(shown == nil, 'dialog всё-таки показал слишком длинный текст')
+emoji.plugin = nil
+
 print(#emoji.list .. ' смайлов, ' .. (failed == 0 and 'ВСЁ ОК' or failed .. ' ОШИБОК'))
 os.exit(failed == 0 and 0 or 1)
