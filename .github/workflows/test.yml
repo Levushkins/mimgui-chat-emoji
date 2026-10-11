@@ -1,0 +1,30 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  lua:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install LuaJIT
+        run: sudo apt-get update && sudo apt-get install -y luajit
+      - name: Library tests
+        run: luajit tools/test_chat_emoji.lua
+      - name: Syntax of the examples
+        run: |
+          for f in moonloader/*.lua moonloader/lib/*.lua moonloader/resource/chat_emoji/*.lua tools/*.lua; do
+            luajit -bl "$f" > /dev/null || exit 1
+          done
+
+  python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile tools
+        run: python -m py_compile tools/*.py

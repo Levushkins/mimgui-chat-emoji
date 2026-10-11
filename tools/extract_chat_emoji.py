@@ -7,8 +7,9 @@ extract_chat_emoji.py - извлекает из _chat.asi (Arizona Games chat pl
   * встроенные шрифты (RCDATA, сжаты алгоритмом stb_compress из ImGui
     binary_to_compressed_c) -> icons.ttf / big_icons.ttf / arial_bold.ttf /
     heading_now.ttf
-  * таблицу смайлов {const char* name; uint32_t codepoint} (825 записей)
-    -> emoji.json / emoji_list.lua
+  * таблицу смайлов {const char* name; uint32_t codepoint} (838 записей
+    в сборке 08.09.2026) -> emoji.json / emoji_list.lua
+  * отпечаток плагина (размер, время сборки, SHA-1) -> source.json
 
 Зависимостей нет, только стандартная библиотека.
 
@@ -16,6 +17,7 @@ extract_chat_emoji.py - извлекает из _chat.asi (Arizona Games chat pl
 """
 
 import argparse
+import hashlib
 import json
 import os
 import re
@@ -42,6 +44,9 @@ class PE:
         magic, = struct.unpack_from("<H", data, opt)
         if magic != 0x10B:
             raise ValueError("поддерживается только PE32 (x86)")
+        # Время сборки из COFF-заголовка: меняется с каждой новой версией
+        # плагина, поэтому по нему библиотека узнаёт, что атлас устарел.
+        self.timestamp, = struct.unpack_from("<I", data, coff + 4)
         self.image_base, = struct.unpack_from("<I", data, opt + 28)
         num_dirs, = struct.unpack_from("<I", data, opt + 92)
         self.dirs = []
@@ -430,7 +435,9 @@ HIDDEN_RANGES = [
     (0xF25D, 0xF26F, "Скрытые: значки сервера"),
     (0xF270, 0xF2FF, "Скрытые: цифры и метки"),
     (0xF300, 0xF3FF, "Скрытые: оружие"),
-    (0x1FC00, 0x1FCFF, "Скрытые: недвижимость и чат"),
+    (0x1FC00, 0x1FC38, "Скрытые: недвижимость и чат"),
+    # Добавлены в сентябре 2026: Telegram, VK и логотипы компаний с биржи.
+    (0x1FC39, 0x1FCFF, "Скрытые: биржа и соцсети"),
 ]
 HIDDEN_OTHER = "Скрытые: прочее"
 
@@ -438,6 +445,37 @@ HIDDEN_OTHER = "Скрытые: прочее"
 # интерфейса плагина. В чат они, скорее всего, не вставляются - текст чата
 # рисуется другим шрифтом, - но в наборе им место.
 BIG_ICONS_CATEGORY = "Скрытые: интерфейс (big_icons)"
+
+# Короткие ASCII-имена категорий. Русские названия удобны в панели, но
+# искать по ним из кода неудобно: emoji.category('weapons') надёжнее, чем
+# строка в кодировке, которую легко испортить пересохранением файла.
+CATEGORY_IDS = {
+    "Смайлы и животные": "smileys",
+    "Люди и жесты": "people",
+    "Праздники и предметы": "objects",
+    "Еда и растения": "food",
+    "Транспорт и места": "travel",
+    "Символы": "symbols",
+    "Буквы и логотипы": "letters",
+    "Скрытые: интерфейс": "hidden_ui",
+    "Скрытые: ленты и плашки": "hidden_ribbons",
+    "Скрытые: VIP и уровни": "hidden_vip",
+    "Скрытые: значки сервера": "hidden_badges",
+    "Скрытые: цифры и метки": "hidden_marks",
+    "Скрытые: оружие": "hidden_weapons",
+    "Скрытые: недвижимость и чат": "hidden_property",
+    "Скрытые: биржа и соцсети": "hidden_brands",
+    "Скрытые: интерфейс (big_icons)": "hidden_big_ui",
+    "Скрытые: прочее": "hidden_other",
+}
+
+
+def category_id(name):
+    if name in CATEGORY_IDS:
+        return CATEGORY_IDS[name]
+    # «Группа 8» и прочее, чего в таблице нет: id из номера, чтобы был ASCII
+    digits = "".join(c for c in name if c.isdigit())
+    return "group" + (digits or str(abs(hash(name)) % 1000))
 
 
 def hidden_category(cp):
@@ -599,6 +637,7 @@ def build_items(panel, table, icon_cps=(), big_cps=()):
         it["index"] = i
         it["hex"] = "%05X" % it["cp"]
         it["name"] = it["names"][0] if it["names"] else "u%x" % it["cp"]
+        it["catId"] = category_id(it["cat"])
     return items
 
 
@@ -662,7 +701,21 @@ def main():
     with open(os.path.join(args.out, "emoji.json"), "w", encoding="utf-8") as f:
         json.dump(items, f, ensure_ascii=False, indent=1)
     write_lua(items, os.path.join(args.out, "emoji_list.lua"))
-    print("  записано: emoji.json, emoji_list.lua")
+
+    # Отпечаток плагина, из которого всё извлечено. build_emoji_atlas.py
+    # переносит его в описание атласа, а библиотека сверяет с _chat.asi
+    # в игре и предупреждает, когда Arizona обновила плагин.
+    source = {
+        "file": os.path.basename(args.asi),
+        "size": len(data),
+        "stamp": pe.timestamp,
+        "sha1": hashlib.sha1(data).hexdigest(),
+        "count": len(items),
+    }
+    with open(os.path.join(args.out, "source.json"), "w", encoding="utf-8") as f:
+        json.dump(source, f, indent=1)
+    print("  записано: emoji.json, emoji_list.lua, source.json "
+          "(сборка плагина 0x%08X, %d байт)" % (pe.timestamp, len(data)))
 
 
 if __name__ == "__main__":

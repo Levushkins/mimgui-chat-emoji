@@ -1,2 +1,12 @@
 __pycache__/
 *.pyc
+
+# коммерческие шрифты из ресурсов 101 и 102: extract_chat_emoji.py
+# достаёт их, но в репозиторий они не кладутся
+data/arial.ttf
+data/heading_now.ttf
+
+# готовые архивы для GitHub Releases и материалы для форума
+dist/
+blasthack/
+test_in_game/

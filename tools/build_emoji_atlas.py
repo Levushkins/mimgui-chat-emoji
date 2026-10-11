@@ -29,6 +29,8 @@ import json
 import os
 import struct
 import sys
+import unicodedata
+import zlib
 
 try:
     from PIL import Image, ImageDraw, ImageFont
@@ -254,15 +256,10 @@ def place(img, size, box_w, box_h):
     return out
 
 
-def lua_str(s):
-    """Строка для Lua целиком в ASCII: не-ASCII байты уходят в \\ddd.
-
-    Так сгенерированные файлы невозможно испортить пересохранением в другой
-    кодировке - а именно на этом всё и спотыкается: ImGui ждёт UTF-8, а
-    блокнот по умолчанию пишет cp1251.
-    """
+def lua_bytes(raw):
+    """Байты в Lua-строку целиком в ASCII: всё не-ASCII уходит в \\ddd."""
     out = []
-    for b in s.encode("utf-8"):
+    for b in raw:
         c = chr(b)
         if b < 0x20 or b >= 0x7F:
             out.append("\\%03d" % b)     # ровно три цифры: Lua дальше не читает
@@ -271,6 +268,90 @@ def lua_str(s):
         else:
             out.append(c)
     return "'" + "".join(out) + "'"
+
+
+def lua_str(s):
+    """Строка для Lua целиком в ASCII: не-ASCII байты уходят в \\ddd.
+
+    Так сгенерированные файлы невозможно испортить пересохранением в другой
+    кодировке - а именно на этом всё и спотыкается: ImGui ждёт UTF-8, а
+    блокнот по умолчанию пишет cp1251.
+    """
+    return lua_bytes(s.encode("utf-8"))
+
+
+def unicode_alias(cp):
+    """Стабильное английское имя по базе Unicode: U+1F34E -> 'red_apple'.
+
+    Имена из таблицы плагина Arizona иногда переезжают: в сентябре 2026 имя
+    'apple' ушло от 🍎 к логотипу Apple. Имя из Unicode от плагина не
+    зависит, поэтому emoji.get('red_apple') находит яблоко при любой версии.
+    """
+    try:
+        name = unicodedata.name(chr(cp))
+    except ValueError:
+        return None
+    alias = "".join(c if c.isalnum() else "_" for c in name.lower())
+    while "__" in alias:
+        alias = alias.replace("__", "_")
+    return alias.strip("_") or None
+
+
+# Русские слова для иконок Arizona, которых нет в Unicode и, значит, в CLDR.
+# Оружие подписано по номерам GTA, порядок сверен по картинкам атласа.
+EXTRA_RU = {
+    0x1FC39: "телеграм телега тг", 0x1FC3A: "вконтакте вк",
+    0x1FC3B: "алфавит гугл google", 0x1FC3C: "амазон",
+    0x1FC3D: "эпл айфон", 0x1FC3E: "бмв бэха", 0x1FC3F: "мерседес мерс",
+    0x1FC40: "майкрософт", 0x1FC41: "нвидиа видеокарта",
+    0x1FC42: "индекс биржа акции", 0x1FC43: "спейсикс ракета",
+    0x1FC44: "тесла", 0x1FC45: "тойота", 0x1FC46: "фольксваген",
+}
+WEAPONS_RU = [
+    "кулак", "кастет", "клюшка гольф", "дубинка", "нож", "бита", "лопата",
+    "кий", "катана", "бензопила", "дилдо", "дилдо", "вибратор", "вибратор",
+    "цветы букет", "трость", "граната", "слезоточивый газ", "коктейль молотова",
+    None, None, None,
+    "кольт пистолет", "пистолет глушитель", "дигл deagle пистолет",
+    "дробовик шотган", "обрез", "спас дробовик", "узи", "мп5 mp5",
+    "калаш ак-47 автомат", "м4 m4 автомат", "тек-9", "винтовка",
+    "снайперка снайперская винтовка", "рпг гранатомет", "ракетница",
+    "огнемет", "миниган пулемет", "сумка взрывчатка", "детонатор",
+    "баллончик краска", "огнетушитель", None, "очки ночного видения",
+    "тепловизор", "парашют",
+]
+
+
+def weapon_cp(wid):
+    """Номер оружия GTA -> кодовая точка иконки Arizona (или None)."""
+    if 0 <= wid <= 18:
+        return 0xF300 + wid
+    if 22 <= wid <= 42:
+        return 0xF300 + wid - 3
+    return {44: 0xF329, 45: 0xF329, 46: 0xF32A}.get(wid)
+
+
+def russian_words(cldr, cp):
+    words = []
+    if cldr and ("%X" % cp) in cldr:
+        words.append(cldr["%X" % cp])
+    if cp in EXTRA_RU:
+        words.append(EXTRA_RU[cp])
+    for wid, ru in enumerate(WEAPONS_RU):
+        if ru and weapon_cp(wid) == cp:
+            words.append(ru)
+    text = " ".join(words).lower().replace("ё", "е")
+    seen, out = set(), []
+    for w in text.split():
+        if w not in seen:
+            seen.add(w)
+            out.append(w)
+    return " ".join(out)
+
+
+def crc32_file(path):
+    with open(path, "rb") as f:
+        return "%08x" % (zlib.crc32(f.read()) & 0xFFFFFFFF)
 
 
 LUA_HEADER = """-- Автоматически сгенерировано build_emoji_atlas.py.
@@ -286,16 +367,37 @@ LUA_HEADER = """-- Автоматически сгенерировано build_e
 -- UV-координаты считаются в chat_emoji.lua как:
 --   u0 = (slot %% cols) * cell / width,  v0 = floor(slot / cols) * cell / height
 --   u1 = u0 + cells * cell / width,      v1 = v0 + cell / height
+--
+-- Версия 3 добавила к версии 2 только поля верхнего уровня (hash, small,
+-- source, categories), сами записи прежние: библиотека 3.1 и старше читает
+-- этот файл без изменений.
+--   hash       - CRC32 файла атласа; по нему скрипты делят одну текстуру
+--   small      - тот же атлас вдвое меньше, для смайлов до 20 px
+--   source     - размер и время сборки _chat.asi, из которого всё извлечено
+--   categories - короткие ASCII-имена категорий
 
 return {
-  version = 2,
+  version = 3,
   file   = '%s',
   width  = %d,
   height = %d,
   cell   = %d,
   cols   = %d,
   count  = %d,
-  emoji  = {
+  hash   = '%s',
+%s  emoji  = {
+"""
+
+SEARCH_HEADER = """-- Автоматически сгенерировано build_emoji_atlas.py.
+-- Русские ключевые слова для поиска. Источник - Unicode CLDR
+-- (annotations/ru.xml, лицензия Unicode License v3,
+-- https://www.unicode.org/license.txt) плюс подписи иконок Arizona.
+--
+-- Строки в cp1251 и записаны escape-последовательностями: так файл вдвое
+-- меньше, чем в UTF-8, и не портится пересохранением. Библиотека читает его
+-- только при первом поиске, скриптам без панели он не стоит ничего.
+
+return {
 """
 
 
@@ -314,6 +416,15 @@ def main():
     ap.add_argument("--pad", type=int, default=2, help="отступ внутри ячейки")
     ap.add_argument("--width", type=int, default=2048, help="ширина атласа")
     ap.add_argument("--name", default="chat_emoji", help="имя выходных файлов")
+    ap.add_argument("--pow2", action="store_true",
+                    help="округлять высоту до степени двойки, как до 3.2 "
+                         "(лишние ~5 МБ видеопамяти)")
+    ap.add_argument("--no-small", action="store_true",
+                    help="не собирать уменьшенный атлас для мелких смайлов")
+    ap.add_argument("--source", help="source.json от extract_chat_emoji.py "
+                                     "(по умолчанию рядом с emoji.json)")
+    ap.add_argument("--keywords", help="cldr_ru.json от cldr_ru.py "
+                                       "(по умолчанию рядом с emoji.json)")
     args = ap.parse_args()
 
     if not args.emoji:
@@ -411,9 +522,19 @@ def main():
         col += n
     rows = row + 1
 
-    height = 1
-    while height < rows * args.cell:
-        height *= 2
+    # Раньше высота округлялась до степени двойки: 34 ряда по 40 px давали
+    # 1360 px, а текстура выходила 2048 - треть видеопамяти уходила на
+    # пустоту. Библиотека создаёт текстуру с D3DX_DEFAULT_NONPOW2 и сверяет
+    # реальный размер, так что округление больше не нужно. Высота кратна 8:
+    # тогда и у малого атласа (ровно вдвое меньше) она кратна 4, а этого
+    # требует сжатие DXT5 (emoji.FORMAT = 'dxt5').
+    height = rows * args.cell
+    if args.pow2:
+        h2 = 1
+        while h2 < height:
+            h2 *= 2
+        height = h2
+    height = (height + 7) // 8 * 8
     atlas = Image.new("RGBA", (args.width, height), (0, 0, 0, 0))
     for _it, img, _n, slot in placed:
         x = (slot % cols) * args.cell
@@ -423,27 +544,99 @@ def main():
     png = os.path.join(args.out, args.name + ".png")
     atlas.save(png, optimize=True)
     wide = sum(1 for _i, _g, n, _s in placed if n > 1)
-    print("атлас: %s  %dx%d, ячейка %d, %d смайлов (широких %d)" %
-          (png, args.width, height, args.cell, len(placed), wide))
+    print("атлас: %s  %dx%d, ячейка %d, %d смайлов (широких %d), %.1f МБ видеопамяти" %
+          (png, args.width, height, args.cell, len(placed), wide,
+           args.width * height * 4 / 1048576.0))
     if missing:
         print("не найдено в шрифтах (%d): %s" %
               (len(missing), ", ".join(m["name"] for m in missing[:20])))
 
+    # Уменьшенная копия для мелких размеров. ImGui рисует атлас без
+    # mip-уровней, и при 12-16 px из ячейки 40 картинка рябит. Раскладка
+    # та же, ячейки ровно вдвое меньше - значит, и UV у записей те же самые,
+    # библиотеке достаточно подменить текстуру. Каждый блок уменьшается
+    # отдельно, иначе фильтр затягивал бы на край пиксели соседней ячейки.
+    small_line = ""
+    if not args.no_small and args.cell % 2 == 0 and args.width % 2 == 0:
+        sc = args.cell // 2
+        sw, sh = args.width // 2, height // 2
+        small = Image.new("RGBA", (sw, sh), (0, 0, 0, 0))
+        for _it, _img, n, slot in placed:
+            x = (slot % cols) * args.cell
+            y = (slot // cols) * args.cell
+            block = atlas.crop((x, y, x + n * args.cell, y + args.cell))
+            block = block.resize((n * sc, sc), Image.LANCZOS)
+            small.paste(block, (x // 2, y // 2))
+        spng = os.path.join(args.out, args.name + "_small.png")
+        small.save(spng, optimize=True)
+        print("малый атлас: %s  %dx%d, %.1f МБ видеопамяти" %
+              (spng, sw, sh, sw * sh * 4 / 1048576.0))
+        small_line = ("  small  = { file = '%s', width = %d, height = %d, "
+                      "cell = %d, hash = '%s' },\n"
+                      % (args.name + "_small.png", sw, sh, sc, crc32_file(spng)))
+
+    base = os.path.dirname(os.path.abspath(args.json))
+    source_path = args.source or os.path.join(base, "source.json")
+    source_line = ""
+    if os.path.isfile(source_path):
+        src = json.load(open(source_path, encoding="utf-8"))
+        source_line = ("  source = { file = %s, size = %d, stamp = 0x%08X },\n"
+                       % (lua_str(src.get("file", "_chat.asi")),
+                          src["size"], src["stamp"]))
+    else:
+        print("source.json не найден - библиотека не сможет заметить, "
+              "что атлас устарел")
+
+    cat_ids = []
+    for it, _img, _n, _slot in placed:
+        pair = (it["cat"], it.get("catId") or "")
+        if pair not in cat_ids:
+            cat_ids.append(pair)
+    cats_line = "  categories = {\n%s  },\n" % "".join(
+        "    { id = %s, name = %s },\n" % (lua_str(cid), lua_str(cat))
+        for cat, cid in cat_ids if cid)
+
     lua = os.path.join(args.out, args.name + "_atlas.lua")
+    used_names = set(n for it in items for n in (it.get("names") or []))
     with open(lua, "w", encoding="utf-8") as f:
         f.write(LUA_HEADER % (args.name + ".png", args.width, height,
-                              args.cell, cols, len(placed)))
+                              args.cell, cols, len(placed), crc32_file(png),
+                              small_line + source_line + cats_line))
         q = lua_str
 
         for it, _img, n, slot in placed:
             names = it.get("names") or []
+            aliases = list(names[1:])    # синонимы: ':)', '<3' и подобные
+            uni = unicode_alias(it["cp"])
+            if uni and uni != it["name"] and uni not in names \
+                    and uni not in used_names:
+                aliases.append(uni)
             row = "    { %s, 0x%05X, %s, %d, %d" % (
                 q(it["name"]), it["cp"], q(it["cat"]), slot, n)
-            if len(names) > 1:      # синонимы: ':)', '<3' и подобные
-                row += ", { %s }" % ", ".join(q(a) for a in names[1:])
+            if aliases:
+                row += ", { %s }" % ", ".join(q(a) for a in aliases)
             f.write(row + " },\n")
         f.write("  },\n}\n")
     print("описание: %s" % lua)
+
+    # Русские слова - отдельным файлом, который грузится только при поиске.
+    kw_path = args.keywords or os.path.join(base, "cldr_ru.json")
+    cldr = json.load(open(kw_path, encoding="utf-8")) if os.path.isfile(kw_path) else None
+    if cldr is None:
+        print("cldr_ru.json не найден - русский поиск будет только по категориям")
+    search = os.path.join(args.out, args.name + "_search.lua")
+    count = 0
+    with open(search, "w", encoding="utf-8") as f:
+        f.write(SEARCH_HEADER)
+        for it, _img, _n, _slot in placed:
+            words = russian_words(cldr, it["cp"])
+            if not words:
+                continue
+            raw = words.encode("cp1251", errors="ignore")
+            f.write("  [0x%05X] = %s,\n" % (it["cp"], lua_bytes(raw)))
+            count += 1
+        f.write("}\n")
+    print("русский поиск: %s (%d смайлов)" % (search, count))
 
 
 if __name__ == "__main__":

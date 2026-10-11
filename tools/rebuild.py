@@ -46,7 +46,16 @@ def find_asi():
     return None
 
 
-def find_font():
+def find_font(asi=None):
+    # Чат берёт эмодзи-шрифт из fontcustom рядом с игрой. Сначала ищем его
+    # возле того _chat.asi, из которого собираем: тогда атлас совпадёт с
+    # чатом, даже если библиотека лежит не внутри папки игры.
+    if asi:
+        game = os.path.dirname(os.path.abspath(asi))
+        for rel in FONT_RELATIVE:
+            p = os.path.join(game, rel)
+            if os.path.isfile(p):
+                return p
     for d in ASI_DIRS:
         for rel in FONT_RELATIVE:
             p = os.path.join(d, rel)
@@ -97,7 +106,7 @@ def main():
                  '    Укажите путь:  rebuild.bat --asi "C:\\...\\_chat.asi"')
 
     # --- шаг 2: сборка атласа ----------------------------------------------
-    font = args.emoji or find_font()
+    font = args.emoji or find_font(asi)
     if not font:
         sys.exit("[!] не найден эмодзи-шрифт.\n"
                  '    Укажите путь:  rebuild.bat --emoji '
