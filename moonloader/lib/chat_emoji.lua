@@ -140,7 +140,7 @@ end
 
 local emoji = {}
 
-emoji.VERSION = '3.2'
+emoji.VERSION = '3.3'
 
 emoji.ready = false      -- таблицы построены (хватает для чата и диалогов)
 emoji.loaded = false     -- то же плюс текстура: можно рисовать в mimgui
@@ -767,6 +767,11 @@ function emoji.build(atlas)
             -- баннера («ВИП ЧАТ», ленты) до 4. Рисуем с этим соотношением,
             -- иначе широкие иконки сплющивались бы в полоску.
             cells = cells,
+            -- Arizona выкинула часть иконок из шрифтов плагина (сборка
+            -- 31.10.2026 - сразу 69 штук). Артворк для них у нас свой, в
+            -- атласе, поэтому в окне mimgui они рисуются как обычно. А вот
+            -- в чате и в диалоге их уже некому нарисовать - это и есть legacy.
+            legacy = row.legacy == true,
             token = (':u%x:'):format(cp),
             -- Числами UV лежат всегда, а ImVec2 собираем только когда mimgui
             -- действительно есть: без него модуль остаётся пригодным для
@@ -1266,11 +1271,24 @@ end
 --- отрисовать. Вместе с токеном съедается один пробел за ним, иначе на
 --- месте смайла оставались бы двойные пробелы.
 ---@param text string
+---@param onlyLegacy? boolean убрать только иконки, выкинутые из плагина:
+---       остальные он нарисует, и трогать их незачем
 ---@return string
-function emoji.strip(text)
+function emoji.strip(text, onlyLegacy)
     if type(text) ~= 'string' then return text end
-    local out = text:gsub(emoji.TOKEN .. ' ?', '')
-    out = out:gsub(' +\n', '\n'):gsub(' +$', '')
+    local out, n
+    if onlyLegacy then
+        out, n = text:gsub(emoji.PATTERN .. ' ?', function(hex)
+            local e = emoji.byCp[tonumber(hex, 16)]
+            if e and e.legacy then return '' end
+            return nil          -- nil оставляет токен на месте
+        end)
+    else
+        out, n = text:gsub(emoji.TOKEN .. ' ?', '')
+    end
+    if n > 0 then
+        out = out:gsub(' +\n', '\n'):gsub(' +$', '')
+    end
     return out
 end
 
@@ -1284,7 +1302,10 @@ function emoji.fit(text, target)
     local ok
     if target == 'server' then ok = emoji.serverSupports()
     else ok = emoji.canRender() end
-    if ok then return text end
+    -- Даже когда рисовать есть кому, часть иконок плагин уже не знает:
+    -- Arizona выкинула их из шрифтов. Такие токены убираем всегда, иначе
+    -- в строке останется мусор вида ":uf240:".
+    if ok then return emoji.strip(text, true) end
     return emoji.strip(text)
 end
 

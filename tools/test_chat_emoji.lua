@@ -226,9 +226,9 @@ emoji.plugin = nil
 local ffi = require 'ffi'
 
 -- версия
-check(emoji.atLeast('3.2') and emoji.atLeast('3') and emoji.atLeast('2.9.9'),
+check(emoji.atLeast('3.3') and emoji.atLeast('3') and emoji.atLeast('2.9.9'),
       'atLeast отказал на подходящей версии')
-check(not emoji.atLeast('3.3') and not emoji.atLeast('4.0'),
+check(not emoji.atLeast('3.4') and not emoji.atLeast('4.0'),
       'atLeast согласился на версию новее')
 
 -- описание атласа версии 3
@@ -509,6 +509,52 @@ local okSelf, problems = emoji.selfTest()
 for _, p in ipairs(problems) do
     check(p:find('^note:'), 'selfTest: ' .. p)
 end
+
+-- --------------------------------------------------------------------------
+-- legacy: иконки, выкинутые Arizona из шрифтов плагина в сборке 31.10.2026.
+-- В атласе они есть, артворк наш, но слать их токеном в чат бессмысленно.
+local legacyCount = 0
+for _, e in ipairs(emoji.list) do
+    if e.legacy then legacyCount = legacyCount + 1 end
+end
+check(legacyCount > 0, 'ни одной записи legacy: флаг не доехал из атласа')
+print('помечено legacy: ' .. legacyCount)
+
+for _, cp in ipairs({ 0xF240, 0xF230, 0xF265, 0x1FC25, 0x1FC39, 0xF23B }) do
+    local e = emoji.get(cp)
+    check(e ~= nil, ('U+%05X пропала из атласа'):format(cp))
+    check(e and e.legacy == true, ('U+%05X должна быть legacy'):format(cp))
+end
+for _, key in ipairs({ 'cash', 'smiley', 'arz' }) do
+    local e = emoji.get(key)
+    check(e ~= nil and e.legacy == false,
+          key .. ' живой в новом плагине, legacy стоять не должен')
+end
+-- восемь новых иконок ноябрьской сборки
+for _, cp in ipairs({ 0xF028, 0xF2F7, 0xF2FD }) do
+    local e = emoji.get(cp)
+    check(e ~= nil and e.legacy == false,
+          ('новая U+%05X должна быть в атласе и не legacy'):format(cp))
+end
+
+local mixed = 'a ' .. emoji.tok('cash') .. ' b ' .. emoji.encode(0xF240) .. ' c'
+check(emoji.strip(mixed, true) == 'a ' .. emoji.tok('cash') .. ' b c',
+      'strip(onlyLegacy) убрал не то: ' .. emoji.strip(mixed, true))
+check(emoji.strip(mixed) == 'a b c', 'обычный strip должен убрать оба токена')
+check(emoji.strip('без токенов', true) == 'без токенов',
+      'strip(onlyLegacy) тронул чистый текст')
+
+emoji.plugin = true
+emoji.server = true
+check(emoji.fit(mixed) == 'a ' .. emoji.tok('cash') .. ' b c',
+      'fit обязан убрать мёртвый токен даже при живом плагине')
+check(emoji.fit(mixed, 'server') == 'a ' .. emoji.tok('cash') .. ' b c',
+      'fit(server) обязан убрать мёртвый токен')
+emoji.plugin = false
+emoji.server = false
+check(emoji.fit(mixed) == 'a b c', 'fit без плагина обязан убрать все токены')
+emoji.plugin = nil
+emoji.server = nil
 
 print(#emoji.list .. ' смайлов, ' .. (failed == 0 and 'ВСЁ ОК' or failed .. ' ОШИБОК'))
 os.exit(failed == 0 and 0 or 1)

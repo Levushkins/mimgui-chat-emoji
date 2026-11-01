@@ -408,6 +408,9 @@ def main():
     ap.add_argument("json", help="emoji.json от extract_chat_emoji.py")
     ap.add_argument("--icons", required=True, help="icons.ttf из _chat.asi")
     ap.add_argument("--big-icons", help="big_icons.ttf из _chat.asi")
+    ap.add_argument("--legacy-icons", default=None,
+                    help="icons.ttf прошлой версии плагина: источник артворка "
+                         "для иконок, выкинутых из новой сборки")
     ap.add_argument("--emoji", help="цветной эмодзи-шрифт (seguiemj.ttf)")
     ap.add_argument("-o", "--out", default=".", help="каталог результата")
     ap.add_argument("--cell", type=int, default=40, help="размер ячейки, px")
@@ -441,6 +444,13 @@ def main():
 
     icons_cps = font_codepoints(args.icons)
     big_cps = font_codepoints(args.big_icons) if args.big_icons else set()
+    if args.legacy_icons is None:
+        guess = os.path.join(os.path.dirname(os.path.dirname(
+            os.path.abspath(__file__))), "data", "icons_legacy.ttf")
+        if os.path.exists(guess):
+            args.legacy_icons = guess
+    legacy_cps = (font_codepoints(args.legacy_icons)
+                  if args.legacy_icons else set())
     emoji_cps = font_codepoints(args.emoji)
     print("icons.ttf: %d кодовых точек, эмодзи-шрифт: %d" %
           (len(icons_cps), len(emoji_cps)))
@@ -449,6 +459,8 @@ def main():
     f_emoji, s_emoji = open_font(args.emoji, args.cell)
     f_big, s_big = (open_font(args.big_icons, args.cell)
                     if args.big_icons else (None, 1.0))
+    f_leg, s_leg = (open_font(args.legacy_icons, args.cell)
+                    if args.legacy_icons else (None, 1.0))
 
     # распорка подбирается под каждый шрифт отдельно: её контур задаёт высоту
     # маски, а значит и то, не срежет ли низ у крупных цветных картинок
@@ -458,6 +470,10 @@ def main():
     if f_big is not None:
         box_big = int(args.cell / s_big) if s_big != 1.0 else args.cell
         sp_big, spadv_big = pick_spacer(f_big, big_cps, box_big)
+    if f_leg is not None:
+        box_leg = int(args.cell / s_leg) if s_leg != 1.0 else args.cell
+        sp_leg, spadv_leg = pick_spacer(f_leg, legacy_cps, box_leg)
+        print("снимок прошлой версии: %d кодовых точек" % len(legacy_cps))
     sp_emoji, spadv_emoji = pick_spacer(f_emoji, emoji_cps, box_emoji)
     print("распорка: icons %s, эмодзи %s" % (
         " ".join("U+%04X" % ord(c) for c in sp_icons) or "нет",
@@ -476,6 +492,12 @@ def main():
         elif f_big is not None and cp in big_cps:
             font, scale = f_big, s_big
             spacer, spadv = sp_big, spadv_big
+        elif f_leg is not None and cp in legacy_cps:
+            # иконку выкинули из плагина, но артворк есть в снимке прошлой
+            # версии: в своём окне она пригодится, в чате её уже не нарисуют
+            font, scale = f_leg, s_leg
+            spacer, spadv = sp_leg, spadv_leg
+            it["legacy"] = True
         elif cp in emoji_cps:
             font, scale = f_emoji, s_emoji
             spacer, spadv = sp_emoji, spadv_emoji
@@ -484,6 +506,16 @@ def main():
             continue
         box = int(args.cell / scale) if scale != 1.0 else args.cell
         img = render_glyph(ch, font, box, spacer, spadv)
+        if (img is None and f_leg is not None and font is not f_leg
+                and cp in legacy_cps):
+            # Arizona оставила код в cmap, но выпотрошила сам глиф: по шрифту
+            # код «есть», а рисовать нечего. Берём артворк из снимка и
+            # помечаем запись - в чате её уже не отрисуют.
+            box = int(args.cell / s_leg) if s_leg != 1.0 else args.cell
+            img = render_glyph(ch, f_leg, box, sp_leg, spadv_leg)
+            if img is not None:
+                it["legacy"] = True
+                scale = s_leg
         if img is None:
             missing.append(it)
             continue
@@ -615,6 +647,10 @@ def main():
                 q(it["name"]), it["cp"], q(it["cat"]), slot, n)
             if aliases:
                 row += ", { %s }" % ", ".join(q(a) for a in aliases)
+            if it.get("legacy"):
+                # именованный ключ, а не ещё одно поле массива: синонимы
+                # необязательны, и седьмая позиция поехала бы
+                row += ", legacy = true"
             f.write(row + " },\n")
         f.write("  },\n}\n")
     print("описание: %s" % lua)

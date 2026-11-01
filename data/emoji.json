@@ -13847,10 +13847,19 @@
   "catId": "hidden_ui"
  },
  {
-  "cp": 61488,
+  "cp": 61480,
   "cat": "Скрытые: интерфейс",
   "names": [],
   "index": 1363,
+  "hex": "0F028",
+  "name": "uf028",
+  "catId": "hidden_ui"
+ },
+ {
+  "cp": 61488,
+  "cat": "Скрытые: интерфейс",
+  "names": [],
+  "index": 1364,
   "hex": "0F030",
   "name": "uf030",
   "catId": "hidden_ui"
@@ -13859,7 +13868,7 @@
   "cp": 61720,
   "cat": "Скрытые: интерфейс",
   "names": [],
-  "index": 1364,
+  "index": 1365,
   "hex": "0F118",
   "name": "uf118",
   "catId": "hidden_ui"
@@ -13868,7 +13877,7 @@
   "cp": 61722,
   "cat": "Скрытые: интерфейс",
   "names": [],
-  "index": 1365,
+  "index": 1366,
   "hex": "0F11A",
   "name": "uf11a",
   "catId": "hidden_ui"
@@ -13877,7 +13886,7 @@
   "cp": 61952,
   "cat": "Скрытые: ленты и плашки",
   "names": [],
-  "index": 1366,
+  "index": 1367,
   "hex": "0F200",
   "name": "uf200",
   "catId": "hidden_ribbons"
@@ -13886,7 +13895,7 @@
   "cp": 61953,
   "cat": "Скрытые: ленты и плашки",
   "names": [],
-  "index": 1367,
+  "index": 1368,
   "hex": "0F201",
   "name": "uf201",
   "catId": "hidden_ribbons"
@@ -13895,7 +13904,7 @@
   "cp": 61954,
   "cat": "Скрытые: ленты и плашки",
   "names": [],
-  "index": 1368,
+  "index": 1369,
   "hex": "0F202",
   "name": "uf202",
   "catId": "hidden_ribbons"
@@ -13904,7 +13913,7 @@
   "cp": 61955,
   "cat": "Скрытые: ленты и плашки",
   "names": [],
-  "index": 1369,
+  "index": 1370,
   "hex": "0F203",
   "name": "uf203",
   "catId": "hidden_ribbons"
@@ -13913,7 +13922,7 @@
   "cp": 61956,
   "cat": "Скрытые: ленты и плашки",
   "names": [],
-  "index": 1370,
+  "index": 1371,
   "hex": "0F204",
   "name": "uf204",
   "catId": "hidden_ribbons"
@@ -13922,7 +13931,7 @@
   "cp": 61957,
   "cat": "Скрытые: ленты и плашки",
   "names": [],
-  "index": 1371,
+  "index": 1372,
   "hex": "0F205",
   "name": "uf205",
   "catId": "hidden_ribbons"
@@ -13931,7 +13940,7 @@
   "cp": 61958,
   "cat": "Скрытые: ленты и плашки",
   "names": [],
-  "index": 1372,
+  "index": 1373,
   "hex": "0F206",
   "name": "uf206",
   "catId": "hidden_ribbons"
@@ -13940,7 +13949,7 @@
   "cp": 61959,
   "cat": "Скрытые: ленты и плашки",
   "names": [],
-  "index": 1373,
+  "index": 1374,
   "hex": "0F207",
   "name": "uf207",
   "catId": "hidden_ribbons"
@@ -13949,7 +13958,7 @@
   "cp": 61960,
   "cat": "Скрытые: ленты и плашки",
   "names": [],
-  "index": 1374,
+  "index": 1375,
   "hex": "0F208",
   "name": "uf208",
   "catId": "hidden_ribbons"
@@ -13958,7 +13967,7 @@
   "cp": 61961,
   "cat": "Скрытые: ленты и плашки",
   "names": [],
-  "index": 1375,
+  "index": 1376,
   "hex": "0F209",
   "name": "uf209",
   "catId": "hidden_ribbons"
@@ -13967,7 +13976,7 @@
   "cp": 61962,
   "cat": "Скрытые: ленты и плашки",
   "names": [],
-  "index": 1376,
+  "index": 1377,
   "hex": "0F20A",
   "name": "uf20a",
   "catId": "hidden_ribbons"
@@ -13976,7 +13985,7 @@
   "cp": 61963,
   "cat": "Скрытые: ленты и плашки",
   "names": [],
-  "index": 1377,
+  "index": 1378,
   "hex": "0F20B",
   "name": "uf20b",
   "catId": "hidden_ribbons"
@@ -13985,7 +13994,7 @@
   "cp": 61964,
   "cat": "Скрытые: ленты и плашки",
   "names": [],
-  "index": 1378,
+  "index": 1379,
   "hex": "0F20C",
   "name": "uf20c",
   "catId": "hidden_ribbons"
@@ -13994,7 +14003,7 @@
   "cp": 61965,
   "cat": "Скрытые: ленты и плашки",
   "names": [],
-  "index": 1379,
+  "index": 1380,
   "hex": "0F20D",
   "name": "uf20d",
   "catId": "hidden_ribbons"
@@ -14003,7 +14012,7 @@
   "cp": 61966,
   "cat": "Скрытые: ленты и плашки",
   "names": [],
-  "index": 1380,
+  "index": 1381,
   "hex": "0F20E",
   "name": "uf20e",
   "catId": "hidden_ribbons"
@@ -14012,7 +14021,7 @@
   "cp": 61967,
   "cat": "Скрытые: ленты и плашки",
   "names": [],
-  "index": 1381,
+  "index": 1382,
   "hex": "0F20F",
   "name": "uf20f",
   "catId": "hidden_ribbons"
@@ -14021,7 +14030,7 @@
   "cp": 61968,
   "cat": "Скрытые: ленты и плашки",
   "names": [],
-  "index": 1382,
+  "index": 1383,
   "hex": "0F210",
   "name": "uf210",
   "catId": "hidden_ribbons"
@@ -14030,7 +14039,7 @@
   "cp": 61969,
   "cat": "Скрытые: ленты и плашки",
   "names": [],
-  "index": 1383,
+  "index": 1384,
   "hex": "0F211",
   "name": "uf211",
   "catId": "hidden_ribbons"
@@ -14039,7 +14048,7 @@
   "cp": 61970,
   "cat": "Скрытые: ленты и плашки",
   "names": [],
-  "index": 1384,
+  "index": 1385,
   "hex": "0F212",
   "name": "uf212",
   "catId": "hidden_ribbons"
@@ -14048,7 +14057,7 @@
   "cp": 61971,
   "cat": "Скрытые: ленты и плашки",
   "names": [],
-  "index": 1385,
+  "index": 1386,
   "hex": "0F213",
   "name": "uf213",
   "catId": "hidden_ribbons"
@@ -14057,7 +14066,7 @@
   "cp": 61972,
   "cat": "Скрытые: ленты и плашки",
   "names": [],
-  "index": 1386,
+  "index": 1387,
   "hex": "0F214",
   "name": "uf214",
   "catId": "hidden_ribbons"
@@ -14066,7 +14075,7 @@
   "cp": 61973,
   "cat": "Скрытые: ленты и плашки",
   "names": [],
-  "index": 1387,
+  "index": 1388,
   "hex": "0F215",
   "name": "uf215",
   "catId": "hidden_ribbons"
@@ -14075,7 +14084,7 @@
   "cp": 61974,
   "cat": "Скрытые: ленты и плашки",
   "names": [],
-  "index": 1388,
+  "index": 1389,
   "hex": "0F216",
   "name": "uf216",
   "catId": "hidden_ribbons"
@@ -14084,7 +14093,7 @@
   "cp": 61975,
   "cat": "Скрытые: ленты и плашки",
   "names": [],
-  "index": 1389,
+  "index": 1390,
   "hex": "0F217",
   "name": "uf217",
   "catId": "hidden_ribbons"
@@ -14093,7 +14102,7 @@
   "cp": 61976,
   "cat": "Скрытые: ленты и плашки",
   "names": [],
-  "index": 1390,
+  "index": 1391,
   "hex": "0F218",
   "name": "uf218",
   "catId": "hidden_ribbons"
@@ -14102,7 +14111,7 @@
   "cp": 61977,
   "cat": "Скрытые: ленты и плашки",
   "names": [],
-  "index": 1391,
+  "index": 1392,
   "hex": "0F219",
   "name": "uf219",
   "catId": "hidden_ribbons"
@@ -14111,7 +14120,7 @@
   "cp": 61978,
   "cat": "Скрытые: ленты и плашки",
   "names": [],
-  "index": 1392,
+  "index": 1393,
   "hex": "0F21A",
   "name": "uf21a",
   "catId": "hidden_ribbons"
@@ -14120,7 +14129,7 @@
   "cp": 61979,
   "cat": "Скрытые: ленты и плашки",
   "names": [],
-  "index": 1393,
+  "index": 1394,
   "hex": "0F21B",
   "name": "uf21b",
   "catId": "hidden_ribbons"
@@ -14129,7 +14138,7 @@
   "cp": 61980,
   "cat": "Скрытые: ленты и плашки",
   "names": [],
-  "index": 1394,
+  "index": 1395,
   "hex": "0F21C",
   "name": "uf21c",
   "catId": "hidden_ribbons"
@@ -14138,7 +14147,7 @@
   "cp": 61981,
   "cat": "Скрытые: ленты и плашки",
   "names": [],
-  "index": 1395,
+  "index": 1396,
   "hex": "0F21D",
   "name": "uf21d",
   "catId": "hidden_ribbons"
@@ -14147,7 +14156,7 @@
   "cp": 61982,
   "cat": "Скрытые: ленты и плашки",
   "names": [],
-  "index": 1396,
+  "index": 1397,
   "hex": "0F21E",
   "name": "uf21e",
   "catId": "hidden_ribbons"
@@ -14156,7 +14165,7 @@
   "cp": 61983,
   "cat": "Скрытые: ленты и плашки",
   "names": [],
-  "index": 1397,
+  "index": 1398,
   "hex": "0F21F",
   "name": "uf21f",
   "catId": "hidden_ribbons"
@@ -14165,7 +14174,7 @@
   "cp": 61984,
   "cat": "Скрытые: ленты и плашки",
   "names": [],
-  "index": 1398,
+  "index": 1399,
   "hex": "0F220",
   "name": "uf220",
   "catId": "hidden_ribbons"
@@ -14174,7 +14183,7 @@
   "cp": 61985,
   "cat": "Скрытые: ленты и плашки",
   "names": [],
-  "index": 1399,
+  "index": 1400,
   "hex": "0F221",
   "name": "uf221",
   "catId": "hidden_ribbons"
@@ -14183,7 +14192,7 @@
   "cp": 61986,
   "cat": "Скрытые: ленты и плашки",
   "names": [],
-  "index": 1400,
+  "index": 1401,
   "hex": "0F222",
   "name": "uf222",
   "catId": "hidden_ribbons"
@@ -14192,7 +14201,7 @@
   "cp": 61987,
   "cat": "Скрытые: ленты и плашки",
   "names": [],
-  "index": 1401,
+  "index": 1402,
   "hex": "0F223",
   "name": "uf223",
   "catId": "hidden_ribbons"
@@ -14201,7 +14210,7 @@
   "cp": 61988,
   "cat": "Скрытые: ленты и плашки",
   "names": [],
-  "index": 1402,
+  "index": 1403,
   "hex": "0F224",
   "name": "uf224",
   "catId": "hidden_ribbons"
@@ -14210,7 +14219,7 @@
   "cp": 61989,
   "cat": "Скрытые: ленты и плашки",
   "names": [],
-  "index": 1403,
+  "index": 1404,
   "hex": "0F225",
   "name": "uf225",
   "catId": "hidden_ribbons"
@@ -14219,7 +14228,7 @@
   "cp": 61990,
   "cat": "Скрытые: ленты и плашки",
   "names": [],
-  "index": 1404,
+  "index": 1405,
   "hex": "0F226",
   "name": "uf226",
   "catId": "hidden_ribbons"
@@ -14228,7 +14237,7 @@
   "cp": 61991,
   "cat": "Скрытые: ленты и плашки",
   "names": [],
-  "index": 1405,
+  "index": 1406,
   "hex": "0F227",
   "name": "uf227",
   "catId": "hidden_ribbons"
@@ -14239,10 +14248,11 @@
   "names": [
    "uf230"
   ],
-  "index": 1406,
+  "index": 1407,
   "hex": "0F230",
   "name": "uf230",
-  "catId": "hidden_ribbons"
+  "catId": "hidden_ribbons",
+  "legacy": true
  },
  {
   "cp": 62001,
@@ -14250,10 +14260,11 @@
   "names": [
    "uf231"
   ],
-  "index": 1407,
+  "index": 1408,
   "hex": "0F231",
   "name": "uf231",
-  "catId": "hidden_ribbons"
+  "catId": "hidden_ribbons",
+  "legacy": true
  },
  {
   "cp": 62002,
@@ -14261,10 +14272,11 @@
   "names": [
    "uf232"
   ],
-  "index": 1408,
+  "index": 1409,
   "hex": "0F232",
   "name": "uf232",
-  "catId": "hidden_ribbons"
+  "catId": "hidden_ribbons",
+  "legacy": true
  },
  {
   "cp": 62003,
@@ -14272,10 +14284,11 @@
   "names": [
    "uf233"
   ],
-  "index": 1409,
+  "index": 1410,
   "hex": "0F233",
   "name": "uf233",
-  "catId": "hidden_ribbons"
+  "catId": "hidden_ribbons",
+  "legacy": true
  },
  {
   "cp": 62004,
@@ -14283,10 +14296,11 @@
   "names": [
    "uf234"
   ],
-  "index": 1410,
+  "index": 1411,
   "hex": "0F234",
   "name": "uf234",
-  "catId": "hidden_ribbons"
+  "catId": "hidden_ribbons",
+  "legacy": true
  },
  {
   "cp": 62005,
@@ -14294,10 +14308,11 @@
   "names": [
    "uf235"
   ],
-  "index": 1411,
+  "index": 1412,
   "hex": "0F235",
   "name": "uf235",
-  "catId": "hidden_ribbons"
+  "catId": "hidden_ribbons",
+  "legacy": true
  },
  {
   "cp": 62006,
@@ -14305,10 +14320,11 @@
   "names": [
    "uf236"
   ],
-  "index": 1412,
+  "index": 1413,
   "hex": "0F236",
   "name": "uf236",
-  "catId": "hidden_ribbons"
+  "catId": "hidden_ribbons",
+  "legacy": true
  },
  {
   "cp": 62007,
@@ -14316,10 +14332,11 @@
   "names": [
    "uf237"
   ],
-  "index": 1413,
+  "index": 1414,
   "hex": "0F237",
   "name": "uf237",
-  "catId": "hidden_ribbons"
+  "catId": "hidden_ribbons",
+  "legacy": true
  },
  {
   "cp": 62008,
@@ -14327,10 +14344,11 @@
   "names": [
    "uf238"
   ],
-  "index": 1414,
+  "index": 1415,
   "hex": "0F238",
   "name": "uf238",
-  "catId": "hidden_ribbons"
+  "catId": "hidden_ribbons",
+  "legacy": true
  },
  {
   "cp": 62009,
@@ -14338,10 +14356,11 @@
   "names": [
    "uf239"
   ],
-  "index": 1415,
+  "index": 1416,
   "hex": "0F239",
   "name": "uf239",
-  "catId": "hidden_ribbons"
+  "catId": "hidden_ribbons",
+  "legacy": true
  },
  {
   "cp": 62010,
@@ -14349,10 +14368,11 @@
   "names": [
    "uf23a"
   ],
-  "index": 1416,
+  "index": 1417,
   "hex": "0F23A",
   "name": "uf23a",
-  "catId": "hidden_ribbons"
+  "catId": "hidden_ribbons",
+  "legacy": true
  },
  {
   "cp": 62011,
@@ -14360,7 +14380,7 @@
   "names": [
    "uf23b"
   ],
-  "index": 1417,
+  "index": 1418,
   "hex": "0F23B",
   "name": "uf23b",
   "catId": "hidden_ribbons"
@@ -14371,7 +14391,7 @@
   "names": [
    "uf23c"
   ],
-  "index": 1418,
+  "index": 1419,
   "hex": "0F23C",
   "name": "uf23c",
   "catId": "hidden_ribbons"
@@ -14380,142 +14400,157 @@
   "cp": 62016,
   "cat": "Скрытые: VIP и уровни",
   "names": [],
-  "index": 1419,
+  "index": 1420,
   "hex": "0F240",
   "name": "uf240",
-  "catId": "hidden_vip"
+  "catId": "hidden_vip",
+  "legacy": true
  },
  {
   "cp": 62017,
   "cat": "Скрытые: VIP и уровни",
   "names": [],
-  "index": 1420,
+  "index": 1421,
   "hex": "0F241",
   "name": "uf241",
-  "catId": "hidden_vip"
+  "catId": "hidden_vip",
+  "legacy": true
  },
  {
   "cp": 62018,
   "cat": "Скрытые: VIP и уровни",
   "names": [],
-  "index": 1421,
+  "index": 1422,
   "hex": "0F242",
   "name": "uf242",
-  "catId": "hidden_vip"
+  "catId": "hidden_vip",
+  "legacy": true
  },
  {
   "cp": 62019,
   "cat": "Скрытые: VIP и уровни",
   "names": [],
-  "index": 1422,
+  "index": 1423,
   "hex": "0F243",
   "name": "uf243",
-  "catId": "hidden_vip"
+  "catId": "hidden_vip",
+  "legacy": true
  },
  {
   "cp": 62020,
   "cat": "Скрытые: VIP и уровни",
   "names": [],
-  "index": 1423,
+  "index": 1424,
   "hex": "0F244",
   "name": "uf244",
-  "catId": "hidden_vip"
+  "catId": "hidden_vip",
+  "legacy": true
  },
  {
   "cp": 62021,
   "cat": "Скрытые: VIP и уровни",
   "names": [],
-  "index": 1424,
+  "index": 1425,
   "hex": "0F245",
   "name": "uf245",
-  "catId": "hidden_vip"
+  "catId": "hidden_vip",
+  "legacy": true
  },
  {
   "cp": 62022,
   "cat": "Скрытые: VIP и уровни",
   "names": [],
-  "index": 1425,
+  "index": 1426,
   "hex": "0F246",
   "name": "uf246",
-  "catId": "hidden_vip"
+  "catId": "hidden_vip",
+  "legacy": true
  },
  {
   "cp": 62023,
   "cat": "Скрытые: VIP и уровни",
   "names": [],
-  "index": 1426,
+  "index": 1427,
   "hex": "0F247",
   "name": "uf247",
-  "catId": "hidden_vip"
+  "catId": "hidden_vip",
+  "legacy": true
  },
  {
   "cp": 62024,
   "cat": "Скрытые: VIP и уровни",
   "names": [],
-  "index": 1427,
+  "index": 1428,
   "hex": "0F248",
   "name": "uf248",
-  "catId": "hidden_vip"
+  "catId": "hidden_vip",
+  "legacy": true
  },
  {
   "cp": 62025,
   "cat": "Скрытые: VIP и уровни",
   "names": [],
-  "index": 1428,
+  "index": 1429,
   "hex": "0F249",
   "name": "uf249",
-  "catId": "hidden_vip"
+  "catId": "hidden_vip",
+  "legacy": true
  },
  {
   "cp": 62026,
   "cat": "Скрытые: VIP и уровни",
   "names": [],
-  "index": 1429,
+  "index": 1430,
   "hex": "0F24A",
   "name": "uf24a",
-  "catId": "hidden_vip"
+  "catId": "hidden_vip",
+  "legacy": true
  },
  {
   "cp": 62027,
   "cat": "Скрытые: VIP и уровни",
   "names": [],
-  "index": 1430,
+  "index": 1431,
   "hex": "0F24B",
   "name": "uf24b",
-  "catId": "hidden_vip"
+  "catId": "hidden_vip",
+  "legacy": true
  },
  {
   "cp": 62028,
   "cat": "Скрытые: VIP и уровни",
   "names": [],
-  "index": 1431,
+  "index": 1432,
   "hex": "0F24C",
   "name": "uf24c",
-  "catId": "hidden_vip"
+  "catId": "hidden_vip",
+  "legacy": true
  },
  {
   "cp": 62029,
   "cat": "Скрытые: VIP и уровни",
   "names": [],
-  "index": 1432,
+  "index": 1433,
   "hex": "0F24D",
   "name": "uf24d",
-  "catId": "hidden_vip"
+  "catId": "hidden_vip",
+  "legacy": true
  },
  {
   "cp": 62030,
   "cat": "Скрытые: VIP и уровни",
   "names": [],
-  "index": 1433,
+  "index": 1434,
   "hex": "0F24E",
   "name": "uf24e",
-  "catId": "hidden_vip"
+  "catId": "hidden_vip",
+  "legacy": true
  },
  {
   "cp": 62032,
   "cat": "Скрытые: VIP и уровни",
   "names": [],
-  "index": 1434,
+  "index": 1435,
   "hex": "0F250",
   "name": "uf250",
   "catId": "hidden_vip"
@@ -14524,7 +14559,7 @@
   "cp": 62033,
   "cat": "Скрытые: VIP и уровни",
   "names": [],
-  "index": 1435,
+  "index": 1436,
   "hex": "0F251",
   "name": "uf251",
   "catId": "hidden_vip"
@@ -14533,7 +14568,7 @@
   "cp": 62034,
   "cat": "Скрытые: VIP и уровни",
   "names": [],
-  "index": 1436,
+  "index": 1437,
   "hex": "0F252",
   "name": "uf252",
   "catId": "hidden_vip"
@@ -14542,7 +14577,7 @@
   "cp": 62035,
   "cat": "Скрытые: VIP и уровни",
   "names": [],
-  "index": 1437,
+  "index": 1438,
   "hex": "0F253",
   "name": "uf253",
   "catId": "hidden_vip"
@@ -14551,7 +14586,7 @@
   "cp": 62036,
   "cat": "Скрытые: VIP и уровни",
   "names": [],
-  "index": 1438,
+  "index": 1439,
   "hex": "0F254",
   "name": "uf254",
   "catId": "hidden_vip"
@@ -14560,7 +14595,7 @@
   "cp": 62037,
   "cat": "Скрытые: VIP и уровни",
   "names": [],
-  "index": 1439,
+  "index": 1440,
   "hex": "0F255",
   "name": "uf255",
   "catId": "hidden_vip"
@@ -14569,7 +14604,7 @@
   "cp": 62038,
   "cat": "Скрытые: VIP и уровни",
   "names": [],
-  "index": 1440,
+  "index": 1441,
   "hex": "0F256",
   "name": "uf256",
   "catId": "hidden_vip"
@@ -14578,7 +14613,7 @@
   "cp": 62039,
   "cat": "Скрытые: VIP и уровни",
   "names": [],
-  "index": 1441,
+  "index": 1442,
   "hex": "0F257",
   "name": "uf257",
   "catId": "hidden_vip"
@@ -14587,7 +14622,7 @@
   "cp": 62040,
   "cat": "Скрытые: VIP и уровни",
   "names": [],
-  "index": 1442,
+  "index": 1443,
   "hex": "0F258",
   "name": "uf258",
   "catId": "hidden_vip"
@@ -14596,7 +14631,7 @@
   "cp": 62041,
   "cat": "Скрытые: VIP и уровни",
   "names": [],
-  "index": 1443,
+  "index": 1444,
   "hex": "0F259",
   "name": "uf259",
   "catId": "hidden_vip"
@@ -14605,7 +14640,7 @@
   "cp": 62042,
   "cat": "Скрытые: VIP и уровни",
   "names": [],
-  "index": 1444,
+  "index": 1445,
   "hex": "0F25A",
   "name": "uf25a",
   "catId": "hidden_vip"
@@ -14614,7 +14649,7 @@
   "cp": 62043,
   "cat": "Скрытые: VIP и уровни",
   "names": [],
-  "index": 1445,
+  "index": 1446,
   "hex": "0F25B",
   "name": "uf25b",
   "catId": "hidden_vip"
@@ -14623,7 +14658,7 @@
   "cp": 62045,
   "cat": "Скрытые: значки сервера",
   "names": [],
-  "index": 1446,
+  "index": 1447,
   "hex": "0F25D",
   "name": "uf25d",
   "catId": "hidden_badges"
@@ -14632,7 +14667,7 @@
   "cp": 62046,
   "cat": "Скрытые: значки сервера",
   "names": [],
-  "index": 1447,
+  "index": 1448,
   "hex": "0F25E",
   "name": "uf25e",
   "catId": "hidden_badges"
@@ -14641,7 +14676,7 @@
   "cp": 62047,
   "cat": "Скрытые: значки сервера",
   "names": [],
-  "index": 1448,
+  "index": 1449,
   "hex": "0F25F",
   "name": "uf25f",
   "catId": "hidden_badges"
@@ -14650,19 +14685,21 @@
   "cp": 62048,
   "cat": "Скрытые: значки сервера",
   "names": [],
-  "index": 1449,
+  "index": 1450,
   "hex": "0F260",
   "name": "uf260",
-  "catId": "hidden_badges"
+  "catId": "hidden_badges",
+  "legacy": true
  },
  {
   "cp": 62049,
   "cat": "Скрытые: значки сервера",
   "names": [],
-  "index": 1450,
+  "index": 1451,
   "hex": "0F261",
   "name": "uf261",
-  "catId": "hidden_badges"
+  "catId": "hidden_badges",
+  "legacy": true
  },
  {
   "cp": 62052,
@@ -14670,7 +14707,7 @@
   "names": [
    "vc"
   ],
-  "index": 1451,
+  "index": 1452,
   "hex": "0F264",
   "name": "vc",
   "catId": "hidden_badges"
@@ -14681,10 +14718,11 @@
   "names": [
    "k"
   ],
-  "index": 1452,
+  "index": 1453,
   "hex": "0F265",
   "name": "k",
-  "catId": "hidden_badges"
+  "catId": "hidden_badges",
+  "legacy": true
  },
  {
   "cp": 62054,
@@ -14692,10 +14730,11 @@
   "names": [
    "kk"
   ],
-  "index": 1453,
+  "index": 1454,
   "hex": "0F266",
   "name": "kk",
-  "catId": "hidden_badges"
+  "catId": "hidden_badges",
+  "legacy": true
  },
  {
   "cp": 62055,
@@ -14704,10 +14743,11 @@
    "kkk",
    "m"
   ],
-  "index": 1454,
+  "index": 1455,
   "hex": "0F267",
   "name": "kkk",
-  "catId": "hidden_badges"
+  "catId": "hidden_badges",
+  "legacy": true
  },
  {
   "cp": 62056,
@@ -14715,10 +14755,11 @@
   "names": [
    "kv"
   ],
-  "index": 1455,
+  "index": 1456,
   "hex": "0F268",
   "name": "kv",
-  "catId": "hidden_badges"
+  "catId": "hidden_badges",
+  "legacy": true
  },
  {
   "cp": 62057,
@@ -14726,10 +14767,11 @@
   "names": [
    "kkv"
   ],
-  "index": 1456,
+  "index": 1457,
   "hex": "0F269",
   "name": "kkv",
-  "catId": "hidden_badges"
+  "catId": "hidden_badges",
+  "legacy": true
  },
  {
   "cp": 62058,
@@ -14738,16 +14780,17 @@
    "kkkv",
    "mv"
   ],
-  "index": 1457,
+  "index": 1458,
   "hex": "0F26A",
   "name": "kkkv",
-  "catId": "hidden_badges"
+  "catId": "hidden_badges",
+  "legacy": true
  },
  {
   "cp": 62059,
   "cat": "Скрытые: значки сервера",
   "names": [],
-  "index": 1458,
+  "index": 1459,
   "hex": "0F26B",
   "name": "uf26b",
   "catId": "hidden_badges"
@@ -14756,7 +14799,7 @@
   "cp": 62060,
   "cat": "Скрытые: значки сервера",
   "names": [],
-  "index": 1459,
+  "index": 1460,
   "hex": "0F26C",
   "name": "uf26c",
   "catId": "hidden_badges"
@@ -14765,7 +14808,7 @@
   "cp": 62064,
   "cat": "Скрытые: цифры и метки",
   "names": [],
-  "index": 1460,
+  "index": 1461,
   "hex": "0F270",
   "name": "uf270",
   "catId": "hidden_marks"
@@ -14774,7 +14817,7 @@
   "cp": 62065,
   "cat": "Скрытые: цифры и метки",
   "names": [],
-  "index": 1461,
+  "index": 1462,
   "hex": "0F271",
   "name": "uf271",
   "catId": "hidden_marks"
@@ -14783,7 +14826,7 @@
   "cp": 62066,
   "cat": "Скрытые: цифры и метки",
   "names": [],
-  "index": 1462,
+  "index": 1463,
   "hex": "0F272",
   "name": "uf272",
   "catId": "hidden_marks"
@@ -14792,7 +14835,7 @@
   "cp": 62067,
   "cat": "Скрытые: цифры и метки",
   "names": [],
-  "index": 1463,
+  "index": 1464,
   "hex": "0F273",
   "name": "uf273",
   "catId": "hidden_marks"
@@ -14801,7 +14844,7 @@
   "cp": 62068,
   "cat": "Скрытые: цифры и метки",
   "names": [],
-  "index": 1464,
+  "index": 1465,
   "hex": "0F274",
   "name": "uf274",
   "catId": "hidden_marks"
@@ -14810,7 +14853,7 @@
   "cp": 62069,
   "cat": "Скрытые: цифры и метки",
   "names": [],
-  "index": 1465,
+  "index": 1466,
   "hex": "0F275",
   "name": "uf275",
   "catId": "hidden_marks"
@@ -14819,7 +14862,7 @@
   "cp": 62070,
   "cat": "Скрытые: цифры и метки",
   "names": [],
-  "index": 1466,
+  "index": 1467,
   "hex": "0F276",
   "name": "uf276",
   "catId": "hidden_marks"
@@ -14828,7 +14871,7 @@
   "cp": 62071,
   "cat": "Скрытые: цифры и метки",
   "names": [],
-  "index": 1467,
+  "index": 1468,
   "hex": "0F277",
   "name": "uf277",
   "catId": "hidden_marks"
@@ -14837,7 +14880,7 @@
   "cp": 62072,
   "cat": "Скрытые: цифры и метки",
   "names": [],
-  "index": 1468,
+  "index": 1469,
   "hex": "0F278",
   "name": "uf278",
   "catId": "hidden_marks"
@@ -14846,7 +14889,7 @@
   "cp": 62073,
   "cat": "Скрытые: цифры и метки",
   "names": [],
-  "index": 1469,
+  "index": 1470,
   "hex": "0F279",
   "name": "uf279",
   "catId": "hidden_marks"
@@ -14855,7 +14898,7 @@
   "cp": 62074,
   "cat": "Скрытые: цифры и метки",
   "names": [],
-  "index": 1470,
+  "index": 1471,
   "hex": "0F27A",
   "name": "uf27a",
   "catId": "hidden_marks"
@@ -14864,7 +14907,7 @@
   "cp": 62075,
   "cat": "Скрытые: цифры и метки",
   "names": [],
-  "index": 1471,
+  "index": 1472,
   "hex": "0F27B",
   "name": "uf27b",
   "catId": "hidden_marks"
@@ -14873,7 +14916,7 @@
   "cp": 62076,
   "cat": "Скрытые: цифры и метки",
   "names": [],
-  "index": 1472,
+  "index": 1473,
   "hex": "0F27C",
   "name": "uf27c",
   "catId": "hidden_marks"
@@ -14882,7 +14925,7 @@
   "cp": 62077,
   "cat": "Скрытые: цифры и метки",
   "names": [],
-  "index": 1473,
+  "index": 1474,
   "hex": "0F27D",
   "name": "uf27d",
   "catId": "hidden_marks"
@@ -14891,16 +14934,79 @@
   "cp": 62078,
   "cat": "Скрытые: цифры и метки",
   "names": [],
-  "index": 1474,
+  "index": 1475,
   "hex": "0F27E",
   "name": "uf27e",
+  "catId": "hidden_marks"
+ },
+ {
+  "cp": 62199,
+  "cat": "Скрытые: цифры и метки",
+  "names": [],
+  "index": 1476,
+  "hex": "0F2F7",
+  "name": "uf2f7",
+  "catId": "hidden_marks"
+ },
+ {
+  "cp": 62200,
+  "cat": "Скрытые: цифры и метки",
+  "names": [],
+  "index": 1477,
+  "hex": "0F2F8",
+  "name": "uf2f8",
+  "catId": "hidden_marks"
+ },
+ {
+  "cp": 62201,
+  "cat": "Скрытые: цифры и метки",
+  "names": [],
+  "index": 1478,
+  "hex": "0F2F9",
+  "name": "uf2f9",
+  "catId": "hidden_marks"
+ },
+ {
+  "cp": 62202,
+  "cat": "Скрытые: цифры и метки",
+  "names": [],
+  "index": 1479,
+  "hex": "0F2FA",
+  "name": "uf2fa",
+  "catId": "hidden_marks"
+ },
+ {
+  "cp": 62203,
+  "cat": "Скрытые: цифры и метки",
+  "names": [],
+  "index": 1480,
+  "hex": "0F2FB",
+  "name": "uf2fb",
+  "catId": "hidden_marks"
+ },
+ {
+  "cp": 62204,
+  "cat": "Скрытые: цифры и метки",
+  "names": [],
+  "index": 1481,
+  "hex": "0F2FC",
+  "name": "uf2fc",
+  "catId": "hidden_marks"
+ },
+ {
+  "cp": 62205,
+  "cat": "Скрытые: цифры и метки",
+  "names": [],
+  "index": 1482,
+  "hex": "0F2FD",
+  "name": "uf2fd",
   "catId": "hidden_marks"
  },
  {
   "cp": 62206,
   "cat": "Скрытые: цифры и метки",
   "names": [],
-  "index": 1475,
+  "index": 1483,
   "hex": "0F2FE",
   "name": "uf2fe",
   "catId": "hidden_marks"
@@ -14909,7 +15015,7 @@
   "cp": 62207,
   "cat": "Скрытые: цифры и метки",
   "names": [],
-  "index": 1476,
+  "index": 1484,
   "hex": "0F2FF",
   "name": "uf2ff",
   "catId": "hidden_marks"
@@ -14918,7 +15024,7 @@
   "cp": 62208,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1477,
+  "index": 1485,
   "hex": "0F300",
   "name": "uf300",
   "catId": "hidden_weapons"
@@ -14927,7 +15033,7 @@
   "cp": 62209,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1478,
+  "index": 1486,
   "hex": "0F301",
   "name": "uf301",
   "catId": "hidden_weapons"
@@ -14936,7 +15042,7 @@
   "cp": 62210,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1479,
+  "index": 1487,
   "hex": "0F302",
   "name": "uf302",
   "catId": "hidden_weapons"
@@ -14945,7 +15051,7 @@
   "cp": 62211,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1480,
+  "index": 1488,
   "hex": "0F303",
   "name": "uf303",
   "catId": "hidden_weapons"
@@ -14954,7 +15060,7 @@
   "cp": 62212,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1481,
+  "index": 1489,
   "hex": "0F304",
   "name": "uf304",
   "catId": "hidden_weapons"
@@ -14963,7 +15069,7 @@
   "cp": 62213,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1482,
+  "index": 1490,
   "hex": "0F305",
   "name": "uf305",
   "catId": "hidden_weapons"
@@ -14972,7 +15078,7 @@
   "cp": 62214,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1483,
+  "index": 1491,
   "hex": "0F306",
   "name": "uf306",
   "catId": "hidden_weapons"
@@ -14981,7 +15087,7 @@
   "cp": 62215,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1484,
+  "index": 1492,
   "hex": "0F307",
   "name": "uf307",
   "catId": "hidden_weapons"
@@ -14990,7 +15096,7 @@
   "cp": 62216,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1485,
+  "index": 1493,
   "hex": "0F308",
   "name": "uf308",
   "catId": "hidden_weapons"
@@ -14999,7 +15105,7 @@
   "cp": 62217,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1486,
+  "index": 1494,
   "hex": "0F309",
   "name": "uf309",
   "catId": "hidden_weapons"
@@ -15008,7 +15114,7 @@
   "cp": 62218,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1487,
+  "index": 1495,
   "hex": "0F30A",
   "name": "uf30a",
   "catId": "hidden_weapons"
@@ -15017,7 +15123,7 @@
   "cp": 62219,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1488,
+  "index": 1496,
   "hex": "0F30B",
   "name": "uf30b",
   "catId": "hidden_weapons"
@@ -15026,7 +15132,7 @@
   "cp": 62220,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1489,
+  "index": 1497,
   "hex": "0F30C",
   "name": "uf30c",
   "catId": "hidden_weapons"
@@ -15035,7 +15141,7 @@
   "cp": 62221,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1490,
+  "index": 1498,
   "hex": "0F30D",
   "name": "uf30d",
   "catId": "hidden_weapons"
@@ -15044,7 +15150,7 @@
   "cp": 62222,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1491,
+  "index": 1499,
   "hex": "0F30E",
   "name": "uf30e",
   "catId": "hidden_weapons"
@@ -15053,7 +15159,7 @@
   "cp": 62223,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1492,
+  "index": 1500,
   "hex": "0F30F",
   "name": "uf30f",
   "catId": "hidden_weapons"
@@ -15062,7 +15168,7 @@
   "cp": 62224,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1493,
+  "index": 1501,
   "hex": "0F310",
   "name": "uf310",
   "catId": "hidden_weapons"
@@ -15071,7 +15177,7 @@
   "cp": 62225,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1494,
+  "index": 1502,
   "hex": "0F311",
   "name": "uf311",
   "catId": "hidden_weapons"
@@ -15080,7 +15186,7 @@
   "cp": 62226,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1495,
+  "index": 1503,
   "hex": "0F312",
   "name": "uf312",
   "catId": "hidden_weapons"
@@ -15089,7 +15195,7 @@
   "cp": 62227,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1496,
+  "index": 1504,
   "hex": "0F313",
   "name": "uf313",
   "catId": "hidden_weapons"
@@ -15098,7 +15204,7 @@
   "cp": 62228,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1497,
+  "index": 1505,
   "hex": "0F314",
   "name": "uf314",
   "catId": "hidden_weapons"
@@ -15107,7 +15213,7 @@
   "cp": 62229,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1498,
+  "index": 1506,
   "hex": "0F315",
   "name": "uf315",
   "catId": "hidden_weapons"
@@ -15116,7 +15222,7 @@
   "cp": 62230,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1499,
+  "index": 1507,
   "hex": "0F316",
   "name": "uf316",
   "catId": "hidden_weapons"
@@ -15125,7 +15231,7 @@
   "cp": 62231,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1500,
+  "index": 1508,
   "hex": "0F317",
   "name": "uf317",
   "catId": "hidden_weapons"
@@ -15134,7 +15240,7 @@
   "cp": 62232,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1501,
+  "index": 1509,
   "hex": "0F318",
   "name": "uf318",
   "catId": "hidden_weapons"
@@ -15143,7 +15249,7 @@
   "cp": 62233,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1502,
+  "index": 1510,
   "hex": "0F319",
   "name": "uf319",
   "catId": "hidden_weapons"
@@ -15152,7 +15258,7 @@
   "cp": 62234,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1503,
+  "index": 1511,
   "hex": "0F31A",
   "name": "uf31a",
   "catId": "hidden_weapons"
@@ -15161,7 +15267,7 @@
   "cp": 62235,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1504,
+  "index": 1512,
   "hex": "0F31B",
   "name": "uf31b",
   "catId": "hidden_weapons"
@@ -15170,7 +15276,7 @@
   "cp": 62236,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1505,
+  "index": 1513,
   "hex": "0F31C",
   "name": "uf31c",
   "catId": "hidden_weapons"
@@ -15179,7 +15285,7 @@
   "cp": 62237,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1506,
+  "index": 1514,
   "hex": "0F31D",
   "name": "uf31d",
   "catId": "hidden_weapons"
@@ -15188,7 +15294,7 @@
   "cp": 62238,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1507,
+  "index": 1515,
   "hex": "0F31E",
   "name": "uf31e",
   "catId": "hidden_weapons"
@@ -15197,7 +15303,7 @@
   "cp": 62239,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1508,
+  "index": 1516,
   "hex": "0F31F",
   "name": "uf31f",
   "catId": "hidden_weapons"
@@ -15206,7 +15312,7 @@
   "cp": 62240,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1509,
+  "index": 1517,
   "hex": "0F320",
   "name": "uf320",
   "catId": "hidden_weapons"
@@ -15215,7 +15321,7 @@
   "cp": 62241,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1510,
+  "index": 1518,
   "hex": "0F321",
   "name": "uf321",
   "catId": "hidden_weapons"
@@ -15224,7 +15330,7 @@
   "cp": 62242,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1511,
+  "index": 1519,
   "hex": "0F322",
   "name": "uf322",
   "catId": "hidden_weapons"
@@ -15233,7 +15339,7 @@
   "cp": 62243,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1512,
+  "index": 1520,
   "hex": "0F323",
   "name": "uf323",
   "catId": "hidden_weapons"
@@ -15242,7 +15348,7 @@
   "cp": 62244,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1513,
+  "index": 1521,
   "hex": "0F324",
   "name": "uf324",
   "catId": "hidden_weapons"
@@ -15251,7 +15357,7 @@
   "cp": 62245,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1514,
+  "index": 1522,
   "hex": "0F325",
   "name": "uf325",
   "catId": "hidden_weapons"
@@ -15260,7 +15366,7 @@
   "cp": 62246,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1515,
+  "index": 1523,
   "hex": "0F326",
   "name": "uf326",
   "catId": "hidden_weapons"
@@ -15269,7 +15375,7 @@
   "cp": 62247,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1516,
+  "index": 1524,
   "hex": "0F327",
   "name": "uf327",
   "catId": "hidden_weapons"
@@ -15278,7 +15384,7 @@
   "cp": 62249,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1517,
+  "index": 1525,
   "hex": "0F329",
   "name": "uf329",
   "catId": "hidden_weapons"
@@ -15287,7 +15393,7 @@
   "cp": 62250,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1518,
+  "index": 1526,
   "hex": "0F32A",
   "name": "uf32a",
   "catId": "hidden_weapons"
@@ -15296,7 +15402,7 @@
   "cp": 62251,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1519,
+  "index": 1527,
   "hex": "0F32B",
   "name": "uf32b",
   "catId": "hidden_weapons"
@@ -15305,7 +15411,7 @@
   "cp": 62252,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1520,
+  "index": 1528,
   "hex": "0F32C",
   "name": "uf32c",
   "catId": "hidden_weapons"
@@ -15314,7 +15420,7 @@
   "cp": 62253,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1521,
+  "index": 1529,
   "hex": "0F32D",
   "name": "uf32d",
   "catId": "hidden_weapons"
@@ -15323,7 +15429,7 @@
   "cp": 62254,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1522,
+  "index": 1530,
   "hex": "0F32E",
   "name": "uf32e",
   "catId": "hidden_weapons"
@@ -15332,7 +15438,7 @@
   "cp": 62255,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1523,
+  "index": 1531,
   "hex": "0F32F",
   "name": "uf32f",
   "catId": "hidden_weapons"
@@ -15341,7 +15447,7 @@
   "cp": 62256,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1524,
+  "index": 1532,
   "hex": "0F330",
   "name": "uf330",
   "catId": "hidden_weapons"
@@ -15350,7 +15456,7 @@
   "cp": 62257,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1525,
+  "index": 1533,
   "hex": "0F331",
   "name": "uf331",
   "catId": "hidden_weapons"
@@ -15359,7 +15465,7 @@
   "cp": 62258,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1526,
+  "index": 1534,
   "hex": "0F332",
   "name": "uf332",
   "catId": "hidden_weapons"
@@ -15368,7 +15474,7 @@
   "cp": 62259,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1527,
+  "index": 1535,
   "hex": "0F333",
   "name": "uf333",
   "catId": "hidden_weapons"
@@ -15377,7 +15483,7 @@
   "cp": 62260,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1528,
+  "index": 1536,
   "hex": "0F334",
   "name": "uf334",
   "catId": "hidden_weapons"
@@ -15386,7 +15492,7 @@
   "cp": 62261,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1529,
+  "index": 1537,
   "hex": "0F335",
   "name": "uf335",
   "catId": "hidden_weapons"
@@ -15395,7 +15501,7 @@
   "cp": 62262,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1530,
+  "index": 1538,
   "hex": "0F336",
   "name": "uf336",
   "catId": "hidden_weapons"
@@ -15404,7 +15510,7 @@
   "cp": 62263,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1531,
+  "index": 1539,
   "hex": "0F337",
   "name": "uf337",
   "catId": "hidden_weapons"
@@ -15413,7 +15519,7 @@
   "cp": 62264,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1532,
+  "index": 1540,
   "hex": "0F338",
   "name": "uf338",
   "catId": "hidden_weapons"
@@ -15422,7 +15528,7 @@
   "cp": 62265,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1533,
+  "index": 1541,
   "hex": "0F339",
   "name": "uf339",
   "catId": "hidden_weapons"
@@ -15431,7 +15537,7 @@
   "cp": 62266,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1534,
+  "index": 1542,
   "hex": "0F33A",
   "name": "uf33a",
   "catId": "hidden_weapons"
@@ -15440,7 +15546,7 @@
   "cp": 62267,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1535,
+  "index": 1543,
   "hex": "0F33B",
   "name": "uf33b",
   "catId": "hidden_weapons"
@@ -15449,7 +15555,7 @@
   "cp": 62268,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1536,
+  "index": 1544,
   "hex": "0F33C",
   "name": "uf33c",
   "catId": "hidden_weapons"
@@ -15458,7 +15564,7 @@
   "cp": 62269,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1537,
+  "index": 1545,
   "hex": "0F33D",
   "name": "uf33d",
   "catId": "hidden_weapons"
@@ -15467,7 +15573,7 @@
   "cp": 62270,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1538,
+  "index": 1546,
   "hex": "0F33E",
   "name": "uf33e",
   "catId": "hidden_weapons"
@@ -15476,7 +15582,7 @@
   "cp": 62271,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1539,
+  "index": 1547,
   "hex": "0F33F",
   "name": "uf33f",
   "catId": "hidden_weapons"
@@ -15485,7 +15591,7 @@
   "cp": 62272,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1540,
+  "index": 1548,
   "hex": "0F340",
   "name": "uf340",
   "catId": "hidden_weapons"
@@ -15494,7 +15600,7 @@
   "cp": 62273,
   "cat": "Скрытые: оружие",
   "names": [],
-  "index": 1541,
+  "index": 1549,
   "hex": "0F341",
   "name": "uf341",
   "catId": "hidden_weapons"
@@ -15505,7 +15611,7 @@
   "names": [
    "redcode"
   ],
-  "index": 1542,
+  "index": 1550,
   "hex": "1FC00",
   "name": "redcode",
   "catId": "hidden_property"
@@ -15516,7 +15622,7 @@
   "names": [
    "buy"
   ],
-  "index": 1543,
+  "index": 1551,
   "hex": "1FC1A",
   "name": "buy",
   "catId": "hidden_property"
@@ -15527,7 +15633,7 @@
   "names": [
    "sell"
   ],
-  "index": 1544,
+  "index": 1552,
   "hex": "1FC1B",
   "name": "sell",
   "catId": "hidden_property"
@@ -15538,7 +15644,7 @@
   "names": [
    "rent"
   ],
-  "index": 1545,
+  "index": 1553,
   "hex": "1FC1C",
   "name": "rent",
   "catId": "hidden_property"
@@ -15549,7 +15655,7 @@
   "names": [
    "trade"
   ],
-  "index": 1546,
+  "index": 1554,
   "hex": "1FC1D",
   "name": "trade",
   "catId": "hidden_property"
@@ -15558,7 +15664,7 @@
   "cp": 130078,
   "cat": "Скрытые: недвижимость и чат",
   "names": [],
-  "index": 1547,
+  "index": 1555,
   "hex": "1FC1E",
   "name": "u1fc1e",
   "catId": "hidden_property"
@@ -15567,7 +15673,7 @@
   "cp": 130079,
   "cat": "Скрытые: недвижимость и чат",
   "names": [],
-  "index": 1548,
+  "index": 1556,
   "hex": "1FC1F",
   "name": "u1fc1f",
   "catId": "hidden_property"
@@ -15576,7 +15682,7 @@
   "cp": 130080,
   "cat": "Скрытые: недвижимость и чат",
   "names": [],
-  "index": 1549,
+  "index": 1557,
   "hex": "1FC20",
   "name": "u1fc20",
   "catId": "hidden_property"
@@ -15585,7 +15691,7 @@
   "cp": 130081,
   "cat": "Скрытые: недвижимость и чат",
   "names": [],
-  "index": 1550,
+  "index": 1558,
   "hex": "1FC21",
   "name": "u1fc21",
   "catId": "hidden_property"
@@ -15596,7 +15702,7 @@
   "names": [
    "cash"
   ],
-  "index": 1551,
+  "index": 1559,
   "hex": "1FC22",
   "name": "cash",
   "catId": "hidden_property"
@@ -15607,7 +15713,7 @@
   "names": [
    "cashv"
   ],
-  "index": 1552,
+  "index": 1560,
   "hex": "1FC23",
   "name": "cashv",
   "catId": "hidden_property"
@@ -15618,10 +15724,11 @@
   "names": [
    "asc"
   ],
-  "index": 1553,
+  "index": 1561,
   "hex": "1FC24",
   "name": "asc",
-  "catId": "hidden_property"
+  "catId": "hidden_property",
+  "legacy": true
  },
  {
   "cp": 130085,
@@ -15629,10 +15736,11 @@
   "names": [
    "btc"
   ],
-  "index": 1554,
+  "index": 1562,
   "hex": "1FC25",
   "name": "btc",
-  "catId": "hidden_property"
+  "catId": "hidden_property",
+  "legacy": true
  },
  {
   "cp": 130086,
@@ -15640,10 +15748,11 @@
   "names": [
    "euro"
   ],
-  "index": 1555,
+  "index": 1563,
   "hex": "1FC26",
   "name": "euro",
-  "catId": "hidden_property"
+  "catId": "hidden_property",
+  "legacy": true
  },
  {
   "cp": 130087,
@@ -15651,25 +15760,27 @@
   "names": [
    "info"
   ],
-  "index": 1556,
+  "index": 1564,
   "hex": "1FC27",
   "name": "info",
-  "catId": "hidden_property"
+  "catId": "hidden_property",
+  "legacy": true
  },
  {
   "cp": 130088,
   "cat": "Скрытые: недвижимость и чат",
   "names": [],
-  "index": 1557,
+  "index": 1565,
   "hex": "1FC28",
   "name": "u1fc28",
-  "catId": "hidden_property"
+  "catId": "hidden_property",
+  "legacy": true
  },
  {
   "cp": 130089,
   "cat": "Скрытые: недвижимость и чат",
   "names": [],
-  "index": 1558,
+  "index": 1566,
   "hex": "1FC29",
   "name": "u1fc29",
   "catId": "hidden_property"
@@ -15678,7 +15789,7 @@
   "cp": 130090,
   "cat": "Скрытые: недвижимость и чат",
   "names": [],
-  "index": 1559,
+  "index": 1567,
   "hex": "1FC2A",
   "name": "u1fc2a",
   "catId": "hidden_property"
@@ -15687,7 +15798,7 @@
   "cp": 130091,
   "cat": "Скрытые: недвижимость и чат",
   "names": [],
-  "index": 1560,
+  "index": 1568,
   "hex": "1FC2B",
   "name": "u1fc2b",
   "catId": "hidden_property"
@@ -15696,16 +15807,17 @@
   "cp": 130092,
   "cat": "Скрытые: недвижимость и чат",
   "names": [],
-  "index": 1561,
+  "index": 1569,
   "hex": "1FC2C",
   "name": "u1fc2c",
-  "catId": "hidden_property"
+  "catId": "hidden_property",
+  "legacy": true
  },
  {
   "cp": 130093,
   "cat": "Скрытые: недвижимость и чат",
   "names": [],
-  "index": 1562,
+  "index": 1570,
   "hex": "1FC2D",
   "name": "u1fc2d",
   "catId": "hidden_property"
@@ -15714,16 +15826,17 @@
   "cp": 130094,
   "cat": "Скрытые: недвижимость и чат",
   "names": [],
-  "index": 1563,
+  "index": 1571,
   "hex": "1FC2E",
   "name": "u1fc2e",
-  "catId": "hidden_property"
+  "catId": "hidden_property",
+  "legacy": true
  },
  {
   "cp": 130095,
   "cat": "Скрытые: недвижимость и чат",
   "names": [],
-  "index": 1564,
+  "index": 1572,
   "hex": "1FC2F",
   "name": "u1fc2f",
   "catId": "hidden_property"
@@ -15732,7 +15845,7 @@
   "cp": 130096,
   "cat": "Скрытые: недвижимость и чат",
   "names": [],
-  "index": 1565,
+  "index": 1573,
   "hex": "1FC30",
   "name": "u1fc30",
   "catId": "hidden_property"
@@ -15741,7 +15854,7 @@
   "cp": 130097,
   "cat": "Скрытые: недвижимость и чат",
   "names": [],
-  "index": 1566,
+  "index": 1574,
   "hex": "1FC31",
   "name": "u1fc31",
   "catId": "hidden_property"
@@ -15750,7 +15863,7 @@
   "cp": 130098,
   "cat": "Скрытые: недвижимость и чат",
   "names": [],
-  "index": 1567,
+  "index": 1575,
   "hex": "1FC32",
   "name": "u1fc32",
   "catId": "hidden_property"
@@ -15759,10 +15872,11 @@
   "cp": 130099,
   "cat": "Скрытые: недвижимость и чат",
   "names": [],
-  "index": 1568,
+  "index": 1576,
   "hex": "1FC33",
   "name": "u1fc33",
-  "catId": "hidden_property"
+  "catId": "hidden_property",
+  "legacy": true
  },
  {
   "cp": 130100,
@@ -15770,7 +15884,7 @@
   "names": [
    "yt"
   ],
-  "index": 1569,
+  "index": 1577,
   "hex": "1FC34",
   "name": "yt",
   "catId": "hidden_property"
@@ -15779,7 +15893,7 @@
   "cp": 130101,
   "cat": "Скрытые: недвижимость и чат",
   "names": [],
-  "index": 1570,
+  "index": 1578,
   "hex": "1FC35",
   "name": "u1fc35",
   "catId": "hidden_property"
@@ -15788,7 +15902,7 @@
   "cp": 130102,
   "cat": "Скрытые: недвижимость и чат",
   "names": [],
-  "index": 1571,
+  "index": 1579,
   "hex": "1FC36",
   "name": "u1fc36",
   "catId": "hidden_property"
@@ -15797,7 +15911,7 @@
   "cp": 130103,
   "cat": "Скрытые: недвижимость и чат",
   "names": [],
-  "index": 1572,
+  "index": 1580,
   "hex": "1FC37",
   "name": "u1fc37",
   "catId": "hidden_property"
@@ -15806,7 +15920,7 @@
   "cp": 130104,
   "cat": "Скрытые: недвижимость и чат",
   "names": [],
-  "index": 1573,
+  "index": 1581,
   "hex": "1FC38",
   "name": "u1fc38",
   "catId": "hidden_property"
@@ -15817,10 +15931,11 @@
   "names": [
    "telegram"
   ],
-  "index": 1574,
+  "index": 1582,
   "hex": "1FC39",
   "name": "telegram",
-  "catId": "hidden_brands"
+  "catId": "hidden_brands",
+  "legacy": true
  },
  {
   "cp": 130106,
@@ -15828,10 +15943,11 @@
   "names": [
    "vk"
   ],
-  "index": 1575,
+  "index": 1583,
   "hex": "1FC3A",
   "name": "vk",
-  "catId": "hidden_brands"
+  "catId": "hidden_brands",
+  "legacy": true
  },
  {
   "cp": 130107,
@@ -15839,10 +15955,11 @@
   "names": [
    "alphabet"
   ],
-  "index": 1576,
+  "index": 1584,
   "hex": "1FC3B",
   "name": "alphabet",
-  "catId": "hidden_brands"
+  "catId": "hidden_brands",
+  "legacy": true
  },
  {
   "cp": 130108,
@@ -15850,10 +15967,11 @@
   "names": [
    "amazon"
   ],
-  "index": 1577,
+  "index": 1585,
   "hex": "1FC3C",
   "name": "amazon",
-  "catId": "hidden_brands"
+  "catId": "hidden_brands",
+  "legacy": true
  },
  {
   "cp": 130109,
@@ -15861,10 +15979,11 @@
   "names": [
    "apple"
   ],
-  "index": 1578,
+  "index": 1586,
   "hex": "1FC3D",
   "name": "apple",
-  "catId": "hidden_brands"
+  "catId": "hidden_brands",
+  "legacy": true
  },
  {
   "cp": 130110,
@@ -15872,10 +15991,11 @@
   "names": [
    "bmw"
   ],
-  "index": 1579,
+  "index": 1587,
   "hex": "1FC3E",
   "name": "bmw",
-  "catId": "hidden_brands"
+  "catId": "hidden_brands",
+  "legacy": true
  },
  {
   "cp": 130111,
@@ -15883,10 +16003,11 @@
   "names": [
    "mercedes"
   ],
-  "index": 1580,
+  "index": 1588,
   "hex": "1FC3F",
   "name": "mercedes",
-  "catId": "hidden_brands"
+  "catId": "hidden_brands",
+  "legacy": true
  },
  {
   "cp": 130112,
@@ -15894,10 +16015,11 @@
   "names": [
    "microsoft"
   ],
-  "index": 1581,
+  "index": 1589,
   "hex": "1FC40",
   "name": "microsoft",
-  "catId": "hidden_brands"
+  "catId": "hidden_brands",
+  "legacy": true
  },
  {
   "cp": 130113,
@@ -15905,10 +16027,11 @@
   "names": [
    "nvidia"
   ],
-  "index": 1582,
+  "index": 1590,
   "hex": "1FC41",
   "name": "nvidia",
-  "catId": "hidden_brands"
+  "catId": "hidden_brands",
+  "legacy": true
  },
  {
   "cp": 130114,
@@ -15916,10 +16039,11 @@
   "names": [
    "sp500"
   ],
-  "index": 1583,
+  "index": 1591,
   "hex": "1FC42",
   "name": "sp500",
-  "catId": "hidden_brands"
+  "catId": "hidden_brands",
+  "legacy": true
  },
  {
   "cp": 130115,
@@ -15927,10 +16051,11 @@
   "names": [
    "spacex"
   ],
-  "index": 1584,
+  "index": 1592,
   "hex": "1FC43",
   "name": "spacex",
-  "catId": "hidden_brands"
+  "catId": "hidden_brands",
+  "legacy": true
  },
  {
   "cp": 130116,
@@ -15938,10 +16063,11 @@
   "names": [
    "tesla"
   ],
-  "index": 1585,
+  "index": 1593,
   "hex": "1FC44",
   "name": "tesla",
-  "catId": "hidden_brands"
+  "catId": "hidden_brands",
+  "legacy": true
  },
  {
   "cp": 130117,
@@ -15949,10 +16075,11 @@
   "names": [
    "toyota"
   ],
-  "index": 1586,
+  "index": 1594,
   "hex": "1FC45",
   "name": "toyota",
-  "catId": "hidden_brands"
+  "catId": "hidden_brands",
+  "legacy": true
  },
  {
   "cp": 130118,
@@ -15960,16 +16087,17 @@
   "names": [
    "volksw"
   ],
-  "index": 1587,
+  "index": 1595,
   "hex": "1FC46",
   "name": "volksw",
-  "catId": "hidden_brands"
+  "catId": "hidden_brands",
+  "legacy": true
  },
  {
   "cp": 61440,
   "cat": "Скрытые: интерфейс (big_icons)",
   "names": [],
-  "index": 1588,
+  "index": 1596,
   "hex": "0F000",
   "name": "uf000",
   "catId": "hidden_big_ui"
@@ -15978,7 +16106,7 @@
   "cp": 61441,
   "cat": "Скрытые: интерфейс (big_icons)",
   "names": [],
-  "index": 1589,
+  "index": 1597,
   "hex": "0F001",
   "name": "uf001",
   "catId": "hidden_big_ui"
@@ -15987,7 +16115,7 @@
   "cp": 61442,
   "cat": "Скрытые: интерфейс (big_icons)",
   "names": [],
-  "index": 1590,
+  "index": 1598,
   "hex": "0F002",
   "name": "uf002",
   "catId": "hidden_big_ui"
@@ -15996,7 +16124,7 @@
   "cp": 61452,
   "cat": "Скрытые: интерфейс (big_icons)",
   "names": [],
-  "index": 1591,
+  "index": 1599,
   "hex": "0F00C",
   "name": "uf00c",
   "catId": "hidden_big_ui"
@@ -16005,7 +16133,7 @@
   "cp": 61453,
   "cat": "Скрытые: интерфейс (big_icons)",
   "names": [],
-  "index": 1592,
+  "index": 1600,
   "hex": "0F00D",
   "name": "uf00d",
   "catId": "hidden_big_ui"
@@ -16014,7 +16142,7 @@
   "cp": 61454,
   "cat": "Скрытые: интерфейс (big_icons)",
   "names": [],
-  "index": 1593,
+  "index": 1601,
   "hex": "0F00E",
   "name": "uf00e",
   "catId": "hidden_big_ui"
@@ -16023,7 +16151,7 @@
   "cp": 61455,
   "cat": "Скрытые: интерфейс (big_icons)",
   "names": [],
-  "index": 1594,
+  "index": 1602,
   "hex": "0F00F",
   "name": "uf00f",
   "catId": "hidden_big_ui"
@@ -16032,7 +16160,7 @@
   "cp": 61456,
   "cat": "Скрытые: интерфейс (big_icons)",
   "names": [],
-  "index": 1595,
+  "index": 1603,
   "hex": "0F010",
   "name": "uf010",
   "catId": "hidden_big_ui"
@@ -16041,7 +16169,7 @@
   "cp": 61469,
   "cat": "Скрытые: интерфейс (big_icons)",
   "names": [],
-  "index": 1596,
+  "index": 1604,
   "hex": "0F01D",
   "name": "uf01d",
   "catId": "hidden_big_ui"
@@ -16050,7 +16178,7 @@
   "cp": 61470,
   "cat": "Скрытые: интерфейс (big_icons)",
   "names": [],
-  "index": 1597,
+  "index": 1605,
   "hex": "0F01E",
   "name": "uf01e",
   "catId": "hidden_big_ui"

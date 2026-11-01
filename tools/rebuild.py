@@ -123,6 +123,11 @@ def main():
     if os.path.isfile(big):
         cmd[cmd.index("--icons") + 2:cmd.index("--icons") + 2] = \
             ["--big-icons", big]
+    # Снимок шрифта прошлой версии: из него берётся артворк иконок, которые
+    # Arizona выкинула из плагина. Без него они просто не попадут в атлас.
+    legacy = os.path.join(data, "icons_legacy.ttf")
+    if os.path.isfile(legacy):
+        cmd += ["--legacy-icons", legacy]
     run(cmd)
 
     print("\nГотово. Скопируйте в папку moonloader:")

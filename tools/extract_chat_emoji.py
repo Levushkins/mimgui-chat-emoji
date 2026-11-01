@@ -580,7 +580,14 @@ def write_lua(items, path):
         f.write("}\n")
 
 
-def build_items(panel, table, icon_cps=(), big_cps=()):
+# Серверные иконки живут в приватной области и в блоке 1FCxx. Всё, что вне
+# этих диапазонов, рисуется обычным эмодзи-шрифтом, и наличие глифа в
+# icons.ttf для него не обязательно.
+def is_server_cp(cp):
+    return (0xE000 <= cp <= 0xF8FF) or (0x1FC00 <= cp <= 0x1FCFF)
+
+
+def build_items(panel, table, icon_cps=(), big_cps=(), legacy_cps=()):
     """Сводит списки панели, таблицу имён и глифы icons.ttf в один список.
 
     Порядок: сначала вкладки панели чата как есть, затем всё остальное -
@@ -604,16 +611,35 @@ def build_items(panel, table, icon_cps=(), big_cps=()):
             items.append({"cp": cp, "cat": cat,
                           "names": names_by_cp.get(cp, [])})
 
-    # именованные, но не попавшие в панель
+    # Именованные, но не попавшие в панель. Имя в таблице плагина ещё не
+    # значит, что артворк существует: в сборке 31.10.2026 Arizona оставила
+    # имена брендов (telegram, vk, apple, bmw...), выкинув сами глифы. Такие
+    # записи дали бы в атласе пустые ячейки, поэтому серверные коды, для
+    # которых не нашлось глифа ни в текущих шрифтах, ни в снимке прошлой
+    # версии, мы пропускаем.
     hidden = []
+    artless = []
+    have_art = set(icon_cps) | set(big_cps) | set(legacy_cps)
     for name, cp in table:
         if cp in seen:
+            continue
+        if is_server_cp(cp) and cp not in have_art:
+            artless.append((name, cp))
             continue
         seen.add(cp)
         hidden.append(cp)
 
     # глифы icons.ttf, которых нет вообще нигде: ни в панели, ни в шорткатах
     for cp in sorted(icon_cps):
+        if cp in seen or cp <= 0x20 or cp == 0xFFFD:
+            continue
+        seen.add(cp)
+        hidden.append(cp)
+
+    # Иконки, выкинутые из плагина, но сохранившиеся в снимке прошлой версии.
+    # В чате их больше никто не нарисует, а в своём окне mimgui они работают:
+    # атлас-то наш. Поэтому оставляем и помечаем флагом.
+    for cp in sorted(legacy_cps):
         if cp in seen or cp <= 0x20 or cp == 0xFFFD:
             continue
         seen.add(cp)
@@ -633,12 +659,17 @@ def build_items(panel, table, icon_cps=(), big_cps=()):
         items.append({"cp": cp, "cat": BIG_ICONS_CATEGORY,
                       "names": names_by_cp.get(cp, [])})
 
+    live = set(icon_cps) | set(big_cps)
     for i, it in enumerate(items):
         it["index"] = i
         it["hex"] = "%05X" % it["cp"]
         it["name"] = it["names"][0] if it["names"] else "u%x" % it["cp"]
         it["catId"] = category_id(it["cat"])
-    return items
+        # legacy: артворк есть только в снимке прошлой версии, то есть
+        # текущий плагин такой токен в чате и в диалоге не отрисует
+        if is_server_cp(it["cp"]) and it["cp"] not in live:
+            it["legacy"] = True
+    return items, artless
 
 
 def main():
@@ -646,6 +677,10 @@ def main():
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("asi", help="путь к _chat.asi")
     ap.add_argument("-o", "--out", default="out", help="каталог для результата")
+    ap.add_argument("--legacy-icons", default=None,
+                    help="icons.ttf прошлой версии плагина: источник артворка "
+                         "для иконок, выкинутых из новой сборки "
+                         "(по умолчанию data/icons_legacy.ttf проекта)")
     args = ap.parse_args()
 
     data = open(args.asi, "rb").read()
@@ -693,10 +728,30 @@ def main():
     print("  глифов в icons.ttf: %d, в big_icons.ttf: %d (уникальных %d)"
           % (len(icon_cps), len(big_cps), len(big_cps - icon_cps)))
 
-    items = build_items(panel, table, icon_cps, big_cps)
+    legacy_path = args.legacy_icons
+    if legacy_path is None:
+        guess = os.path.join(os.path.dirname(os.path.dirname(
+            os.path.abspath(__file__))), "data", "icons_legacy.ttf")
+        if os.path.exists(guess):
+            legacy_path = guess
+    legacy_cps = set()
+    if legacy_path and os.path.exists(legacy_path):
+        legacy_cps = font_codepoints(open(legacy_path, "rb").read())
+        print("  снимок прошлой версии: %d глифов, из них нет в новом: %d"
+              % (len(legacy_cps), len(legacy_cps - icon_cps - big_cps)))
+
+    items, artless = build_items(panel, table, icon_cps, big_cps, legacy_cps)
     named = sum(1 for it in items if it["names"])
+    legacy_n = sum(1 for it in items if it.get("legacy"))
     print("  всего смайлов: %d (с именем %d, без имени %d)"
           % (len(items), named, len(items) - named))
+    if legacy_n:
+        print("  только в снимке прошлой версии: %d (в чате не рисуются)"
+              % legacy_n)
+    if artless:
+        print("  имён без артворка пропущено: %d (%s)"
+              % (len(artless), ", ".join(n for n, _c in artless[:6])
+                 + (", ..." if len(artless) > 6 else "")))
 
     with open(os.path.join(args.out, "emoji.json"), "w", encoding="utf-8") as f:
         json.dump(items, f, ensure_ascii=False, indent=1)
